@@ -17,13 +17,15 @@
 
   -[Subconjunto de datos](#data_subset)
   
-  -[Ejercicio 3](#ejercicio3)
+  -[Ejercicio 2](#ejercicio2)
   
   -[Acceder a los elementos utilizando sus índices](#subset_by_index)
   
   -[Subconjunto por nombre](#subset_by_name)
   
   -[Ejercicio 3](#ejercicio3)
+  
+  -[Data frames](#dataframe)
   
   -[Ejercicio 4](#ejercicio4)
   
@@ -402,7 +404,7 @@ Escribe una orden de submuestreo que devuelva los valores de x mayores que 4 y m
 
 
 
-- Data frames
+## Data frames <a name = "dataframe"></a>
 
 ![Data Frame](../Images_markdown/DataFrame.png)
 
