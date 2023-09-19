@@ -671,7 +671,7 @@ Una alternativa abreviada es utilizar simplemente `na.omit()` para omitir todas 
 :question: Pregunta:<br> ¿Qué es un *loop*?<br>
 En programación, un loop es una secuencia de instrucciones de código que se ejecuta repetidas veces, hasta que la condición asignada a dicho bucle deja de cumplirse. Los 3 bucles más utilizados en programación son el bucle while, el bucle for y el bucle do-while ([Wikipedia](https://es.wikipedia.org/wiki/Bucle_(programaci%C3%B3n))).
 
-Así funciona un *loop*:<br>
+Así funciona un * for loop*:<br>
 **Ejemplo 1**: Pide que el computador haga un listado consecutivo de 10 especies.
 
 ```{r}
@@ -681,7 +681,7 @@ Para (x= 1 hasta 10) relaizar esta(s) acciones:
 Fin
 ```
 
-Asi se escribe este *loop* en R:
+Asi se escribe este *for loop* en R:
 ```{r}
 for(x in 1:10){
   print(paste0("Especie ", x))
@@ -702,8 +702,8 @@ Supongamos que tenemos datos de la abundancia de una especies en ocho sitios y q
 
 Con frecuencia nos vemos enfrentados a la necesidad de leer muchos archivos. En estos casos resulta muy dispendioso ejecutar el comando de lectura de datos (e.g. `read.table()`) cambiando el nombre del archivo tantas veces como archivos necesitamos cargar en R. Para casos asi, resulta conveniente usar herramientas básicas de programación como los "bucles", o mas conocidos por su nombre en inglés "*loops*".
 
-Ahora implementemos un *loop* muy simple para cargar un conjunto de datos simples (simulados con el script `simulate_df.R`).<br>
-La lectura de los archivos se puede realizar con un *loop* siguiendo estos pasos:
+Ahora implementemos un *for loop* muy simple para cargar un conjunto de datos simples (simulados con el script `simulate_df.R`).<br>
+La lectura de los archivos se puede realizar con un *for loop* siguiendo estos pasos:
 
 1.  Hacer una lista de los archivos en la carpeta `sim_data` dentro de `datasets` utilizando la función `list.files()`. :bulb: Consejo: Revise la ayuda de la función (`?list.files`) para ver qué argumentos son necesarios en este caso. La información que necesita es:
 
