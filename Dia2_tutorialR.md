@@ -94,6 +94,9 @@ El primer argumento de la función es el más importante: **la ruta al archivo**
 
 > :question: Pregunta:<br> ¿Qué es <i>ruta absoluta</i> y <i>ruta relativa</i>).?
 
+[file system](./Images_markdown/IMG_6771.jpeg)
+
+
 ```{r}
 # Leer una tabla guardada en el disco
 read.table("../datasets/penguins_matrix_space-delim.txt")
