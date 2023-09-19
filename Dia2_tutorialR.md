@@ -406,7 +406,7 @@ Escribe una orden de submuestreo que devuelva los valores de x mayores que 4 y m
 
 ## Data frames <a name = "dataframe"></a>
 
-![Data Frame](../Images_markdown/DataFrame.png)
+![Data Frame](./Images_markdown/DataFrame.png)
 
 Los data.frames pueden entenderse como una lista de vectores apilados en columnas (y por ende, objetos **bidimensionales**), entonces aplican reglas similares.
 
