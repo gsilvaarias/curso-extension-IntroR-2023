@@ -17,7 +17,7 @@ output: html_document
 - [Estadistica](#Ejemplo)
 - [Estadistica](#Medidas de dispersion)
 - [Estadistica](#Rango)
-- [Estadistica](#Variancia)
+- [Estadistica](#Varianza)
 - [Estadistica](#Desviacion estandar)
 - [Estadistica](#Ejercicios)
 - [Estadistica](#Prueba t)
@@ -41,15 +41,15 @@ output: html_document
 
 # Dia 3 - Estadisitca en R
 
-## Conceptos clave <a name = "conceptos"></a>
+# Conceptos clave <a name = "conceptos"></a>
 La estadistica es la disciplina que estudia la variabilidad, recolección, organización, análisis, interpretación y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
 
 Puede clasificarse en dos tipos, descriptiva e inferencial. La estad?stica descriptiva es la metodologia que se emplea para caracterizar un conjunto de datos. Sin embargo, no podemos extraer conclusiones debido a la variabilidad de las muestras. La estadistica inferencial complementa a la descriptiva permitiendo sacar conclusiones extrapolables a la poblacion gracias al empleo de metodos probabilisticos.
 
-## Estadistica  descriptiva <a name = "estadistica descriptiva"></a>
+# Estadistica  descriptiva <a name = "estadistica descriptiva"></a>
 Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas o gráficos y calcular parámetros básicos sobre el conjunto de datos.
 
-## Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
+# Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
 Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
             -la moda
             -la media
@@ -165,19 +165,19 @@ print(result.mean)
 median(x)  
 ```
 
-## Medidas de dispersion <a name = "Medidas de disperion"></a>
+# Medidas de dispersion <a name = "Medidas de disperion"></a>
 Las medidas de dispersión tratan, a través del cálculo de diferentes fórmulas, de arrojar un valor numérico que ofrezca información sobre el grado de variabilidad de una variable.
 
-# Rango <a name = "Rango"></a>
+## Rango <a name = "Rango"></a>
 
 El rango, el valor mximo y minimo, la variabilidad y la desviacion estandar son algunas de las medidas que empleadas habitualmente para describir la variabilidad de la muestra.
 -El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor maximo y minimo de nuestra muestra. 
 
-# Variancia <a name = "Variancia"></a>
+## Varianza <a name = "Varianza"></a>
 
--La variancia representa la variabilidad de una serie de datos respecto a su media. 
+-La varianza representa la variabilidad de una serie de datos respecto a su media. 
 
-# Desviacion estandar <a name = "Desviacion estandar"></a>
+## Desviacion estandar <a name = "Desviacion estandar"></a>
 
 -La desviacion estandar es la raiz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raiz cuadrada de la varianza.
 
