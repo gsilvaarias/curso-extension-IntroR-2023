@@ -408,7 +408,7 @@ Escribe una orden de submuestreo que devuelva los valores de x mayores que 4 y m
 
 ![Data Frame](./Images_markdown/DataFrame.png)
 
-Los data.frames pueden entenderse como una lista de vectores apilados en columnas (y por ende, objetos **bidimensionales**), entonces aplican reglas similares.
+Los data.frames pueden entenderse como una "lista de vectores" apilados en columnas (y por ende, objetos **bidimensionales**), entonces aplican reglas similares.
 
 Los paréntesis rectos `[ ]` actúan de la misma manera que para las listas, donde cada elemento del data.frame corresponde a una columna. :eyes: El objeto resultante será un data.frame. Obtenga la tercera columna del data frame de los pingüinos:
 ```{r}
@@ -565,17 +565,20 @@ Entonces, puedes obtener la suma de dos columnas y almacenarla en una nueva colu
 
 **a.** En nuestro data frame (datos_pinguinos), añadir una columna que muestre la relación entre largo y alto del pico de los pingüinos muestreados:
 ```{r}
-datos_pinguinos$RelLengthDepth <- datos_pinguinos$bill_length_mm / datos_pinguinos$bill_depth_mm
+
+
 ```
 
 **b.** Convertir de unidad la variable peso corporal a kilogramos. 
 ```{r}
-datos_pinguinos$body_mass_kg <- datos_pinguinos$body_mass_g / 1000
+
+
 ```
 
 **c.** Redondear a un solo decimal la nueva variable obtenida en b con la función `round()`. Esta función toma esta forma `round(número(s) a redondear, cuántos decimales desea)`.
 ```{r}
-datos_pinguinos$body_mass_kg <- round(datos_pinguinos$body_mass_kg, 1)
+
+
 ```
 
 
@@ -589,128 +592,68 @@ Muchas funciones en R no pueden manejar datos faltantes, infinitos o indefinidos
 Para identificar valores faltantes, la función `is.na()` devuelve un vector lógico con `TRUE` en las posiciones de los elementos que contienen valores faltnates representados por `NA`. `is.na()` funciona con vectores, listas, matrices y data.frame.
 
 - Datos faltantes en vectores
-```{r}
-# is.na(x) devuelve TRUE si falta x
-y <- c(1,2,3,NA)
-is.na(y) # devuelve un vector (F, F, F, T)
-```
+
+
 
 - Datos faltantes en data.frame
-```{r}
-# hacer data frame con datos faltantes
-df <- data.frame(col1 = c(1:3, NA),
-                 col2 = c("esto", NA,"es", "texto"), 
-                 col3 = c(TRUE, FALSE, TRUE, TRUE), 
-                 col4 = c(2.5, 4.2, 3.2, NA),
-                 stringsAsFactors = FALSE)
 
-# identificar NAs en el data frame completo
-is.na(df)
 
-# identificar NAs en una columna específica del data frame
-is.na(df$col4)
-```
 
 Para identificar la ubicación o el número de datos faltantes (`NA`) podemos aprovechar las funciones `which()` y `sum()`:
-```{r}
-# identificar la ubicación de los NA en un vector
-which(is.na(x))
-## [1] 5 8
-```
 
-```{r}
-# hacer un recuento de NA en el data frame
-sum(is.na(df))
-## [1] 3
-```
+
 
 En data frames, un truco práctico para calcular el total de valores faltantes en cada columna es utilizar `colSums()`:
-```{r}
-colSums(is.na(df))
-```
+
+
 
 ## Recodificación de valores ausentes <a name = "recode_missing_data"></a>
 
 Para recodificar valores ausentes (`NA`) o indicadores específicos que representan valores perdidos (e.g. `-999`), podemos utilizar operaciones normales de subconjunto y asignación. Por ejemplo, si los valores que faltan están representados por otro valor que no es `NA` (e.g. `-999`) podemos simplemente hacer un subconjunto de los datos para los elementos que contienen ese valor y luego asignar un valor deseado a esos elementos, asi:
-```{r}
-# data frame que codifica los valores omitidos como -999
-df <- data.frame(col1 = c(1:3, -999), col2 = c(2.5, 4.2, -999, 3.2))
 
-# cambiar -999s to NA
-df[df == -999] <- NA
-df
-```
+
 
 Si queremos recodificar valores perdidos en una sola variable (columna) del data frame, podemos hacer un subconjunto para el valor perdido en esa variable específica de interés y luego asignarle el valor de sustitución. Por ejemplo, aquí recodificamos el valor que falta en col4 con el valor medio de col4.
-```{r}
-# data frame con datos faltantes
-df <- data.frame(col1 = c(1:3, NA),
-                 col2 = c("this", NA,"is", "text"), 
-                 col3 = c(TRUE, FALSE, TRUE, TRUE), 
-                 col4 = c(2.5, 4.2, 3.2, NA),
-                 stringsAsFactors = FALSE)
-                 
-df$col4[is.na(df$col4)] <- mean(df$col4, na.rm = TRUE)
-df
-```
+
+
 
 ## Exclusión de valores perdidos de los análisis <a name = "eclude_missing_data"></a>
 
 Las funciones aritméticas sobre valores perdidos producen un `NA`. Entonces podemos excluir los valores perdidos de dos formas distintas. En primer lugar, si queremos excluir los valores perdidos de las operaciones matemáticas, utilice el argumento `na.rm = TRUE`.
-```{r}
-x <- c(1,2,NA,3)
-mean(x) # devuelve NA
-mean(x, na.rm=TRUE) # devuelve 2
-```
+
+
 
 También podemos hacer un subconjunto de nuestros datos para obtener observaciones completas, aquellas observaciones (filas) de nuestros datos que no contienen datos que faltan. Podemos hacerlo de varias maneras.
 
 En primer lugar, para encontrar observaciones completas (filas en las que no hay datos faltantes) podemos aprovechar la función `complete.cases()` que devuelve un vector lógico que identifica las filas en las que todos los datos están completos. Así, en el siguiente caso, las filas 1 y 3 son observaciones completas. Podemos utilizar esta información para submuestrear nuestro data frame, lo que nos devolverá las filas que `complete.cases()` ha encontrado como `TRUE`.
-```{r}
-df <- data.frame(col1 = c(1:4),
-                 col2 = c("this", NA,"is", "text"), 
-                 col3 = c(TRUE, FALSE, TRUE, TRUE), 
-                 col4 = c(2.5, 4.2, 3.2, NA),
-                 stringsAsFactors = FALSE)
-                 
-complete.cases(df)
 
-# subset with complete.cases to get complete cases
-df[complete.cases(df), ]
 
-# or subset with `!` operator to get incomplete cases
-df[!complete.cases(df), ]
-```
 
 Una alternativa abreviada es utilizar simplemente `na.omit()` para omitir todas las filas que contengan valores faltantes.
-```{r}
-# Crear un nuevo conjunto de datos sin los datos que faltan
-df_complete <- na.omit(df)
-```
+
+
 
 **Ejercicio 9:** <a name = "ejercicio9"></a>
 
 ¿Cuántos valores perdidos hay en el conjunto de datos de los pingüinos?
 ```{r}
-sum(is.na(datos_pinguinos))
+
+
 ```
 ¿En qué variables se concentran los valores perdidos?
 ```{r}
-colSums(is.na(datos_pinguinos))
+
+
 ```
 ¿Cómo imputaría la media a estos valores? ¿Es posible hacerlo en todas las variables?
 ```{r}
-datos_pinguinos$bill_length_mm[is.na(datos_pinguinos$bill_length_mm)] <- mean(datos_pinguinos$bill_length_mm, na.rm = TRUE)
 
-datos_pinguinos$bill_depth_mm[is.na(datos_pinguinos$bill_depth_mm)] <- mean(datos_pinguinos$bill_depth_mm, na.rm = TRUE)
 
-datos_pinguinos$flipper_length_mm[is.na(datos_pinguinos$flipper_length_mm)] <- mean(datos_pinguinos$flipper_length_mm, na.rm = TRUE)
-
-datos_pinguinos$body_mass_g[is.na(datos_pinguinos$body_mass_g)] <- mean(datos_pinguinos$body_mass_g, na.rm = TRUE)
 ```
 ¿Cómo omitiría todas las filas que contienen valores perdidos?
 ```{r}
-datos_pinguinos_complete <- na.omit(datos_pinguinos)
+
+
 ```
 
 ---
@@ -746,20 +689,12 @@ for(x in 1:10){
 
 **Ejemplo 2**: Calcular itetativamente la densidad poblacional en diferentes sitios.<br>
 Supongamos que tenemos datos de la abundancia de una especies en ocho sitios y queremos calcular la densidad poblacional de cada uno.<br> Primero hagamos nuestro set de datos:
-```{r}
-set_de_datos <- data.frame(
-  sitio = c(1:8),
-  n_especies = c(12, 21, 15, 9, 28, 11, 7, 33),
-  area_m2 = c(56, 64, 33, 76, 55, 34, 90, 45)
-)
-```
-Ahora calculemos la densidad poblacional de cada sitio:
-```{r}
-for(s in 1:8){
-  dens <- set_de_datos[s,2] * set_de_datos[s,3]
-  print(paste0("La densidad sitio ", s, " es: ", dens))
-}
-```
+
+
+
+- Ahora calculemos la densidad poblacional de cada sitio:
+
+
 
 ## Ejercicio final. Lectura masiva de archivos guardados en una carpeta <a name = "Ejercicio_final"></a>
 
@@ -775,9 +710,8 @@ La lectura de los archivos se puede realizar con un *loop* siguiendo estos pasos
 
 ```{r}
 ## Hacer una lista de los archivos en la carpeta
-file_list <- list.files(path = "../datasets/sim_data",
-                        pattern = "loc", ## pueden utilizarse expresiones regulares
-                        full.names = TRUE)
+
+
 ```
 
 2.  Leer los archivos de forma serial y almacenarlos (uno a uno) en un objeto tipo lista. Entonces, cada elemento de la lista tendrá el contenido de cada archivo.<br>
@@ -788,10 +722,8 @@ Cómo hacerlo?
 
 ```{r}
 ## Leer los archivos mediante un loop
-df_list <- list()
-for(i in 1:length(file_list)){
-  df_list[[i]] <- read.table(file_list[i], header = TRUE, sep = "\t")
-}
+
+
 ```
 
 3. Renombrar los elementos de la lista.<br>
@@ -799,23 +731,21 @@ En este momento, los elementos de la lista creada están nombrados con númmeros
 
 ```{r}
 ## Renombrar los elementos de la lista
-names(df_list) <- sub("../datasets/sim_data/(loc.+).txt", "\\1", file_list)
+
+
 ```
 
 4.  Convertir la lista en data frame.<br>
 Por último, convertimos la lista creada en un data frame, asi tendremos todos los datos en un solo objeto. Podemos hacer un nuevo loop en ele que vamos adhiriendo cada elemento de la lista a un data frame nuevo utilizando la función ´rbind()´
 ```{r}
 ## Convertir la lista en data frame
-df_final <- data.frame()
 
-for(i in 1:length(df_list)){
-  df_final <- rbind(df_final,
-                    cbind(names(df_list[i]), df_list[[i]]))
-}
+
 ```
 
 En programación es importante optimizar los códigos de manera que resulte más eficiente procesar los datos. La función ´do.call()´ de R permite llamar a otras funciones y ejecutarlas sobre una lista. Esta tiene dos argumentos: el primero es la función a la que se quiere llamar (en nuestro caso ´rbind()´), y el segundo es una lista de argumentos para pasar a esa función. Al encapsular la llamada a la función como una lista, puede generar y ejecutar llamadas a la función de forma dinámica, haciendo que su código sea más adaptable y conciso.
 ```{r}
-df_final <- as.data.frame(do.call(rbind, df_list))
+
+
 ```
 
