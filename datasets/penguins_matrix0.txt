@@ -1,24 +1,24 @@
 species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex year
-Adelie Torgersen island 39.1 18.7 181 3750 male 2007
-Adelie Torgersen island 39.5 17.4 186 3800 female 2007
-Adelie Torgersen island 40.3 18 195 3250 female 2007
-Adelie Torgersen island NA NA NA NA NA 2007
-Adelie Torgersen island 36.7 19.3 193 3450 female 2007
-Adelie Torgersen island 39.3 20.6 190 3650 male 2007
-Adelie Torgersen island 38.9 17.8 181 3625 female 2007
-Adelie Torgersen island 39.2 19.6 195 4675 male 2007
-Adelie Torgersen island 34.1 18.1 193 3475 NA 2007
-Adelie Torgersen island 42 20.2 190 4250 NA 2007
-Adelie Torgersen island 37.8 17.1 186 3300 NA 2007
-Adelie Torgersen island 37.8 17.3 180 3700 NA 2007
-Adelie Torgersen island 41.1 17.6 182 3200 female 2007
-Adelie Torgersen island 38.6 21.2 191 3800 male 2007
-Adelie Torgersen island 34.6 21.1 198 4400 male 2007
-Adelie Torgersen island 36.6 17.8 185 3700 female 2007
-Adelie Torgersen island 38.7 19 195 3450 female 2007
-Adelie Torgersen island 42.5 20.7 197 4500 male 2007
-Adelie Torgersen island 34.4 18.4 184 3325 female 2007
-Adelie Torgersen island 46 21.5 194 4200 male 2007
+Adelie Torgersen_island 39.1 18.7 181 3750 male 2007
+Adelie Torgersen_island 39.5 17.4 186 3800 female 2007
+Adelie Torgersen_island 40.3 18 195 3250 female 2007
+Adelie Torgersen_island NA NA NA NA NA 2007
+Adelie Torgersen_island 36.7 19.3 193 3450 female 2007
+Adelie Torgersen_island 39.3 20.6 190 3650 male 2007
+Adelie Torgersen_island 38.9 17.8 181 3625 female 2007
+Adelie Torgersen_island 39.2 19.6 195 4675 male 2007
+Adelie Torgersen_island 34.1 18.1 193 3475 NA 2007
+Adelie Torgersen_island 42 20.2 190 4250 NA 2007
+Adelie Torgersen_island 37.8 17.1 186 3300 NA 2007
+Adelie Torgersen_island 37.8 17.3 180 3700 NA 2007
+Adelie Torgersen_island 41.1 17.6 182 3200 female 2007
+Adelie Torgersen_island 38.6 21.2 191 3800 male 2007
+Adelie Torgersen_island 34.6 21.1 198 4400 male 2007
+Adelie Torgersen_island 36.6 17.8 185 3700 female 2007
+Adelie Torgersen_island 38.7 19 195 3450 female 2007
+Adelie Torgersen_island 42.5 20.7 197 4500 male 2007
+Adelie Torgersen_island 34.4 18.4 184 3325 female 2007
+Adelie Torgersen_island 46 21.5 194 4200 male 2007
 Adelie Biscoe 37.8 18.3 174 3400 female 2007
 Adelie Biscoe 37.7 18.7 180 3600 male 2007
 Adelie Biscoe 35.9 19.2 189 3800 female 2007
@@ -67,22 +67,22 @@ Adelie Biscoe 36.4 17.1 184 2850 female 2008
 Adelie Biscoe 41.6 18 192 3950 male 2008
 Adelie Biscoe 35.5 16.2 195 3350 female 2008
 Adelie Biscoe 41.1 19.1 188 4100 male 2008
-Adelie Torgersen island 35.9 16.6 190 3050 female 2008
-Adelie Torgersen island 41.8 19.4 198 4450 male 2008
-Adelie Torgersen island 33.5 19 190 3600 female 2008
-Adelie Torgersen island 39.7 18.4 190 3900 male 2008
-Adelie Torgersen island 39.6 17.2 196 3550 female 2008
-Adelie Torgersen island 45.8 18.9 197 4150 male 2008
-Adelie Torgersen island 35.5 17.5 190 3700 female 2008
-Adelie Torgersen island 42.8 18.5 195 4250 male 2008
-Adelie Torgersen island 40.9 16.8 191 3700 female 2008
-Adelie Torgersen island 37.2 19.4 184 3900 male 2008
-Adelie Torgersen island 36.2 16.1 187 3550 female 2008
-Adelie Torgersen island 42.1 19.1 195 4000 male 2008
-Adelie Torgersen island 34.6 17.2 189 3200 female 2008
-Adelie Torgersen island 42.9 17.6 196 4700 male 2008
-Adelie Torgersen island 36.7 18.8 187 3800 female 2008
-Adelie Torgersen island 35.1 19.4 193 4200 male 2008
+Adelie Torgersen_island 35.9 16.6 190 3050 female 2008
+Adelie Torgersen_island 41.8 19.4 198 4450 male 2008
+Adelie Torgersen_island 33.5 19 190 3600 female 2008
+Adelie Torgersen_island 39.7 18.4 190 3900 male 2008
+Adelie Torgersen_island 39.6 17.2 196 3550 female 2008
+Adelie Torgersen_island 45.8 18.9 197 4150 male 2008
+Adelie Torgersen_island 35.5 17.5 190 3700 female 2008
+Adelie Torgersen_island 42.8 18.5 195 4250 male 2008
+Adelie Torgersen_island 40.9 16.8 191 3700 female 2008
+Adelie Torgersen_island 37.2 19.4 184 3900 male 2008
+Adelie Torgersen_island 36.2 16.1 187 3550 female 2008
+Adelie Torgersen_island 42.1 19.1 195 4000 male 2008
+Adelie Torgersen_island 34.6 17.2 189 3200 female 2008
+Adelie Torgersen_island 42.9 17.6 196 4700 male 2008
+Adelie Torgersen_island 36.7 18.8 187 3800 female 2008
+Adelie Torgersen_island 35.1 19.4 193 4200 male 2008
 Adelie Dream 37.3 17.8 191 3350 female 2008
 Adelie Dream 41.3 20.3 194 3550 male 2008
 Adelie Dream 36.3 19.5 190 3800 male 2008
@@ -115,22 +115,22 @@ Adelie Biscoe 39.7 17.7 193 3200 female 2009
 Adelie Biscoe 42.2 19.5 197 4275 male 2009
 Adelie Biscoe 39.6 20.7 191 3900 female 2009
 Adelie Biscoe 42.7 18.3 196 4075 male 2009
-Adelie Torgersen island 38.6 17 188 2900 female 2009
-Adelie Torgersen island 37.3 20.5 199 3775 male 2009
-Adelie Torgersen island 35.7 17 189 3350 female 2009
-Adelie Torgersen island 41.1 18.6 189 3325 male 2009
-Adelie Torgersen island 36.2 17.2 187 3150 female 2009
-Adelie Torgersen island 37.7 19.8 198 3500 male 2009
-Adelie Torgersen island 40.2 17 176 3450 female 2009
-Adelie Torgersen island 41.4 18.5 202 3875 male 2009
-Adelie Torgersen island 35.2 15.9 186 3050 female 2009
-Adelie Torgersen island 40.6 19 199 4000 male 2009
-Adelie Torgersen island 38.8 17.6 191 3275 female 2009
-Adelie Torgersen island 41.5 18.3 195 4300 male 2009
-Adelie Torgersen island 39 17.1 191 3050 female 2009
-Adelie Torgersen island 44.1 18 210 4000 male 2009
-Adelie Torgersen island 38.5 17.9 190 3325 female 2009
-Adelie Torgersen island 43.1 19.2 197 3500 male 2009
+Adelie Torgersen_island 38.6 17 188 2900 female 2009
+Adelie Torgersen_island 37.3 20.5 199 3775 male 2009
+Adelie Torgersen_island 35.7 17 189 3350 female 2009
+Adelie Torgersen_island 41.1 18.6 189 3325 male 2009
+Adelie Torgersen_island 36.2 17.2 187 3150 female 2009
+Adelie Torgersen_island 37.7 19.8 198 3500 male 2009
+Adelie Torgersen_island 40.2 17 176 3450 female 2009
+Adelie Torgersen_island 41.4 18.5 202 3875 male 2009
+Adelie Torgersen_island 35.2 15.9 186 3050 female 2009
+Adelie Torgersen_island 40.6 19 199 4000 male 2009
+Adelie Torgersen_island 38.8 17.6 191 3275 female 2009
+Adelie Torgersen_island 41.5 18.3 195 4300 male 2009
+Adelie Torgersen_island 39 17.1 191 3050 female 2009
+Adelie Torgersen_island 44.1 18 210 4000 male 2009
+Adelie Torgersen_island 38.5 17.9 190 3325 female 2009
+Adelie Torgersen_island 43.1 19.2 197 3500 male 2009
 Adelie Dream 36.8 18.5 193 3500 female 2009
 Adelie Dream 37.5 18.5 199 4475 male 2009
 Adelie Dream 38.1 17.6 187 3425 female 2009

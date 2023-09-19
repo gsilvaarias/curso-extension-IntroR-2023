@@ -1,0 +1,97 @@
+---
+title: "Dia 2 curso r"
+output: html_notebook
+---
+
+## Lectura de datos en R
+
+
+```{r}
+# leer el archivo 1
+read.table("datasets/penguins_matrix_space-delim.txt",
+           h = TRUE)
+```
+
+```{r}
+# leer en R el archivo penguins_matrix1.txt
+read.delim("datasets/penguins_matrix1.txt")
+```
+
+```{r}
+# leer en R el archivo penguins_matrix2.txt
+read.csv("datasets/penguins_matrix2.txt")
+```
+
+```{r}
+# leer en R el archivo penguins_matrix3.txt
+datos_pinguinos <- read.csv2("datasets/penguins_matrix3.txt")
+datos_pinguinos
+```
+
+
+## Bajar datos de internet
+
+```{r}
+# Especificar la URL donde se almacena el archivo
+url <- "https://www.stats.govt.nz/assets/Uploads/Annual-enterprise-survey/Annual-enterprise-survey-2017-financial-year-provisional/Download-data/annual-enterprise-survey-2017-financial-year-provisional-csv.csv"
+
+destfile <- "datasets/datos_de_internet.csv"
+
+download.file(url, destfile)
+```
+
+# hacer subconjuntos de un data frame
+
+```{r}
+datos_pinguinos[1:2 , c(5,3)]
+```
+
+# eliminar una columna o fila
+```{r}
+datos_pinguinos_limpios <- datos_pinguinos[-c(4:6, 8:12),]
+write.table(datos_pinguinos_limpios,
+            "datasets/matriz_pinguinos_limpia.txt",
+            quote = F,
+            sep = "\t",
+            row.names = F)
+```
+
+
+# subconjunto por nombre
+
+```{r}
+datos_pinguinos$bill_length_mm
+```
+
+### subconjunto por condición
+
+```{r}
+nrow(datos_pinguinos)
+
+nrow(datos_pinguinos[datos_pinguinos$species == "Gentoo", ])
+```
+
+```{r}
+datos_pinguinos[datos_pinguinos$species != "Gentoo", ]
+```
+
+```{r}
+#filtro por dos condiciones
+datos_pinguinos[datos_pinguinos$species == "Gentoo" |
+                  datos_pinguinos$species == "Adelie", ]
+
+```
+
+```{r}
+#filtro por dos condiciones
+datos_pinguinos[datos_pinguinos$species != "Gentoo" &
+                  datos_pinguinos$bill_length_mm > 40, ]
+```
+
+
+
+
+
+
+
+
