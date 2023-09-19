@@ -307,14 +307,16 @@ Va a dar un error un tanto confuso :flushed:
 **Entonces recuerda el orden de las operaciones**. Recuerda `:` es en realidad una función. En este caso toma como primer argumento `-1`, y como segundo argumento `3`, por lo que genera la secuencia de números: `c(-1, 0, 1, 2, 3)`.<br>
 La solución correcta es encerrar esa llamada a la función entre paréntesis, de modo que primero se haga la secuencia y luego el operador `-` se aplique al resultado:
 ```{r}
-x[-(1:3)]
+
+
 ```
 ---
 
 
 Para eliminar (definitivamente) los elementos de un vector, tenemos que volver a asignar el resultado a la variable:
 ```{r}
-x <- x[-(1:3)]
+
+
 ```
 
 **Ejercicio 2** <a name = "ejercicio2"></a>:
@@ -349,20 +351,12 @@ Podemos extraer elementos utilizando su nombre, en lugar de extraer por el índi
 
 Extraer los elementos con nombre `a` y `c` 
 ```{r}
-x[c("a", "c")]
+
+
 ```
 Esta suele ser **una forma mucho más fiable** de hacer subconjunto objetos: la posición de varios elementos puede cambiar a menudo al encadenar operaciones de subconjunto, **¡pero los nombres siempre serán los mismos!**
 
 - Subconjunto mediante otras operaciones lógicas
-
-También podemos utilizar cualquier vector lógico para hacer subconjunto de datos:
-```{r}
-x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
-```
-(o también)
-```{r}
-x[c(F, F, T, F, T)]
-```
 
 Dado que los operadores de comparación (p. ej. `>` , `<` , `==`) evalúan vectores lógicos, también podemos utilizarlos para hacer subconjunto de vectores de forma sucinta: La siguiente expresión da el mismo resultado que la anterior.
 ```{r}
@@ -372,10 +366,18 @@ Viéndolo en detalle, esta expresión evalúa primero `x>7`, generando un vector
 `c(FALSE, FALSE, TRUE, FALSE, TRUE)`, y luego selecciona los elementos de x correspondientes a los valores `TRUE`
 verdaderos.
 
+Entonces, también es posible utilizar cualquier vector lógico para hacer subconjunto de datos:
+```{r}
+
+
+```
+
+
 
 Finalmente, podemos utilizar el comparador "igual que" `==` para imitar el método anterior de submuestreo por nombre (:exclamation: recuerde que debe utilizar `==` en lugar de `=` para las comparaciones):
 ```{r}
-x[names(x) == "a"]
+
+
 ```
 
 
@@ -385,14 +387,14 @@ A menudo queremos combinar varios criterios lógicos.
 
 > :speech_balloon: En R existen varias operaciones para combinar vectores lógicos:<br>
 `&` , el operador **AND lógic**: devuelve `TRUE` si ambas condiciones son verdaderas.
-`|` , el operador **OR lógic**: devuelve `TRUE` , si una (o ambas) son verdaderas.<br>
-(A veces verá `&&` y `||` en lugar de `&` y `|`.
-Estos operadores de dos caracteres sólo miran el primer elemento de cada vector e ignoran los elementos restantes. En general, no debe utilizar los operadores de dos caracteres en el análisis de datos; resérvelos para la programación, es decir, para decidir si se ejecuta o no una sentencia).<br>
+`|` , el operador **OR lógic**: devuelve `TRUE` , si una (o ambas) son verdaderas.<br><br>
 Además, el operador lógico `NOT` convierte `TRUE` en `FALSE` y `FALSE` en `TRUE`.<br>
-Puede negar una única condición lógica (por ejemplo, `!TRUE` se convierte en `FALSE`) o un vector completo de condiciones (por ejemplo, `!c(TRUE, FALSE`) se convierte en `c(FALSE, TRUE)`).<br>
+Puede negar una única condición lógica (por ejemplo, `!TRUE` se convierte en `FALSE`) o un vector completo de condiciones (por ejemplo, `!c(TRUE, FALSE`) se convierte en `c(FALSE, TRUE)`).<br><br>
 Además, puede comparar los elementos de un mismo vector mediante la función `all()` que devuelve `TRUE` si todos los elementos del vector son `TRUE`) y la función `any()` (que devuelve `TRUE` si uno o más elementos del vector son `TRUE`).
 > :question: ¿Cómo obtener ayuda sobre los operadores?
 Recuerde que puede buscar ayuda sobre los operadores con la función `help()` o solo `?` (no olvide encerrárlos entre comillas). Ejemplo: `help("&")` o `?"&%"`.
+
+
 
 **Ejercicio 3** <a name = "ejercicio3"></a>. Dado el siguiente código:
 ```{r}
@@ -400,12 +402,16 @@ x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 print(x)
 ```
+
 Escribe una orden de submuestreo que devuelva los valores de x mayores que 4 y menores que 7.
 ```{r}
 
 ```
 
+Escribe una orden para verificar si hay algún elemento negativo en el vector x.
+```{r}
 
+```
 
 ## Data frames <a name = "dataframe"></a>
 
@@ -418,7 +424,7 @@ Los paréntesis rectos `[ ]` actúan de la misma manera que para las listas, don
 
 ```
 
-Similarmente, usando doble paréntesis rectos `[[ ]]` da como resultado una columna. Pero el resultado es un vector. Obtenga la tercera columna del data frame de los pingüinos con doble paréntesis:
+Similarmente, usando doble paréntesis rectos `[[ ]]` da como resultado una columna, pero con su clase original. Entonces el resultado es un vector. Obtenga la tercera columna del data frame de los pingüinos con doble paréntesis:
 ```{r}
 
 ```
@@ -529,9 +535,10 @@ datos_pinguinos[datos_pinguinos$year == 2007 | 2009,]
 **Síntesis:**
 1. La indexación en R empieza en 1, no en 0.
 2. Acceda a valores individuales por ubicación utilizando `[ ]`.
-3. Accede a los segmentos de datos mediante `[inicio:fin]`.
-4. Accede a conjuntos arbitrarios de datos mediante `[c(...)]`.
-5. Utilizar operaciones lógicas y vectores lógicos para acceder a subconjuntos de datos.
+3. Acceda a valores individuales en data.frame y listas con `[[ ]]` para obtener el elemento en su forma original.
+4. Accede a los segmentos de datos mediante `[inicio:fin]`.
+5. Accede a conjuntos arbitrarios de datos mediante `[c(...)]`.
+6. Utiliza operaciones lógicas y vectores lógicos para acceder a subconjuntos de datos.
 ---
 
 
@@ -661,7 +668,7 @@ Una alternativa abreviada es utilizar simplemente `na.omit()` para omitir todas 
 
 ---
 **Síntesis:**
-- `is.na()` devolverá todas las posiciones de un vector, matriz o data.frame que contengan `NA` (o `NaN`). De la misma manera, `is.nan()` y `is.infinite()` hará lo mismo para `NaN` e `Inf`, respectivamente.
+- `is.na()` devolverá todas las posiciones de un vector, matriz o data.frame que contengan `NA` ("NOT AVAILABLE") o `NaN` (“NOT A NUMBER”). De la misma manera, `is.nan()` y `is.infinite()` hará lo mismo para `NaN` e `Inf`, respectivamente.
 - `is.finite()` devolverá todas las posiciones de un vector, matriz o data.frame que no contengan `NA`, `NaN` o `Inf`.
 - `na.omit()` filtrará todos los valores faltantes de un vector.
 ---
