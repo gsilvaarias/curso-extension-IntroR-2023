@@ -666,6 +666,8 @@ Una alternativa abreviada es utilizar simplemente `na.omit()` para omitir todas 
 
 # Loops <a name = "loops"></a>
 
+![Loops](./Images_markdown/loops.png)
+
 :question: Pregunta:<br> ¿Qué es un *loop*?<br>
 En programación, un loop es una secuencia de instrucciones de código que se ejecuta repetidas veces, hasta que la condición asignada a dicho bucle deja de cumplirse. Los 3 bucles más utilizados en programación son el bucle while, el bucle for y el bucle do-while ([Wikipedia](https://es.wikipedia.org/wiki/Bucle_(programaci%C3%B3n))).
 
