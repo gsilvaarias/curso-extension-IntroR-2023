@@ -94,7 +94,7 @@ El primer argumento de la función es el más importante: **la ruta al archivo**
 
 > :question: Pregunta:<br> ¿Qué es <i>ruta absoluta</i> y <i>ruta relativa</i>).?
 
-[!file system](./Images_markdown/IMG_6771.jpeg)
+![file system](./Images_markdown/IMG_6771.jpeg)
 
 
 ```{r}
