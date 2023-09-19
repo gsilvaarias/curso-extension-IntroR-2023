@@ -64,28 +64,22 @@ La media representa la distribucion equitativa de los datos si la suma total se 
 # Mediana <a name = "Mediana"></a>
 La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. 
 
-Comencemos definiendo una variable que contiene una secuencia de 34 numeros. ¡Esta sera nuestra muestra!
+# Ejemplo - Medidas de tendencia central></a>
+Comencemos definiendo una variable que contiene una secuencia de 34 numeros ¡Esta sera nuestra muestra!. Recuerda que para ingresar la secuencia en R debemos crear un vector, así:
 
 ```{r pressure, echo=FALSE}
 x<-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137, 138, 139, 140, 114, 142, 149, 143, 144, 145, 146, 147, 148, 133, 133, 133, 149, 150, 139, 152)
 x
 ```
-
-Para conocer  tamaño de la muestra empleamos la funcion length()
+\begin{itemize}
+    \item Para conocer  tamaño de la muestra empleamos la funcion length()
+\end{itemize}
 
 ```{r presures, echo=FALSE}
 ?length
 ```
 ```{r presures, echo=FALSE}
 length(x)
-```
-
-Para determinar la mediana, se utiliza la funcion median()
-```{r pressure, echo=FALSE}
-?median()  
-```
-```{r presures, echo=FALSE}
-median(x)
 ```
 
 Para determinar la moda, podemos usar la funcion mfv(). Para esto, debes intalar el paquete "modeest" y cargarlo:
