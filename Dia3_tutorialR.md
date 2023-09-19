@@ -80,7 +80,15 @@ Para conocer  tamaño de la muestra empleamos la funcion length()
 length(x)
 ```
 
-Una de las formas para determinar la moda es usando la funcion mfv(). Para esto, debes intalar el paquete "modeest" y cargarlo:
+Para determinar la mediana, se utiliza la funcion median()
+```{r pressure, echo=FALSE}
+?median()  
+```
+```{r presures, echo=FALSE}
+median(x)
+```
+
+Para determinar la moda, podemos usar la funcion mfv(). Para esto, debes intalar el paquete "modeest" y cargarlo:
 
 ```{r pressure, echo=FALSE}
 install.packages("modeest")  #Comando para instalar el paquete "modeest"
