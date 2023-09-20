@@ -325,7 +325,8 @@ R tiene cuatro funciones relacionadas con la distribución normal:
 Solo nos enfocaremos en aprender a utilizar la función `rnorm` pues la explicación de las otras funciones esta fuera del alcance de este curso. En este ejemplo, crearemos 100 datos aleatorios con media como 2,5 y la desviación típica como 0,5, así:
 
 ```{r pressure, echo=FALSE}
-rnorm(100, 2.5, 0.5)
+x<-rnorm(100, 2.5, 0.5)
+hist(x)
 ```
 # Prueba Chi Cuadrado <a name = "Chi_cuadrado"></a>
 La prueba χ² (se puede pronunciar como «ji al cuadrado» o «chi al cuadrado») se utiliza para analizar la relación entre dos variables categóricas en un conjunto de datos, como por ejemplo, en pruebas de independencia y bondad de ajuste al modelo.
