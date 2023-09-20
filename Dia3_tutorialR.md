@@ -282,15 +282,14 @@ summary(fit)                                                 # Impresión y resu
 ```
 # Función predict() <a name = "Funcion_predict"></a>
 
-La sintaxis básica de `predict()` en regresión lineal es:
-`predict(objeto, nuevos_datos)`
+La sintaxis básica de `predict()` en regresión lineal es: `predict(objeto, nuevos_datos)`
 A continuación se describen los parámetros utilizados:
 - objeto es la formula ya creada mediante la función `lm()`.
 - nuevos_datos es el vector que contiene el nuevo valor de la variable predictora.
 - El vector predictor es altura
 - La variable de respuesta es peso
 
-Hallar el peso de una persona de estatura 170 cm
+Ejemplo: Hallar el peso de una persona de estatura 170cm:
 ```{r pressure, echo=FALSE}
 a <- data.frame(alt = 170)
 result <-  predict(relation,a)
