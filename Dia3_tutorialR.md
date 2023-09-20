@@ -241,26 +241,21 @@ Extraigamos los datos correspondientes a la longitud de la aleta (flipper_length
 flipper_length <- penguins$flipper_length
 body_mass <- penguins$body_mass
 ```
-
-Ejercicio para comparar la media de una muestra con un valor estandar. Este ejercicio lo realizaremos con la variable "flipper_length" e indicando el valor estándar de la media, en este caso, mu=200:
+### Ejercicio - Comparación de la media de una muestra con un valor estandar <a name = "Ejercicio_t1"></a>
+Este ejercicio lo realizaremos con la variable "flipper_length" e indicando el valor estándar de la media, en este caso, mu=200:
 
 ```{r pressure, echo=FALSE}
 t.test(flipper_length, mu=200)
 ```
-
-Indicando la hipótesis alternativa
+Definición de la hipótesis alternativa:
 ```{r pressure, echo=FALSE}
 t.test(flipper_length, mu=200, alternative="greater")
 ```
-
-### Ejercicio <a name = "Ejercicio_t"></a>
-Calcula el t-test para la variable "body_mass_g"
-
-Entre dos variables, realizarlo para "flipper_length" y "body_mass"
+### Ejercicio - Comparación de las medias de dos muestras <a name = "Ejercicio_t2"></a>
+Este ejercicio lo realizaremos con las variables, "flipper_length" y "body_mass"
 
 ```{r pressure, echo=FALSE}
 alfa<-0.05
-t.test(x,y,var.equal = F, conf.level = 1-alfa, alternative = "two.sided")
 t.test(flipper_length,body_mass, var.equal = F, mu=200, conf.level = 1-alfa, alternative="greater")
 ```
 
