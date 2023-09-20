@@ -147,6 +147,7 @@ print(result.mean)
 ## Mediana <a name = "mediana"></a>
 La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. La mediana podemos determinarla con la funcion median()
 ```{r pressure, echo=FALSE}
+x<-x[-11]
 median(x)  
 ```
 # Medidas de dispersion <a name = "medidas_de_disperion"></a>
