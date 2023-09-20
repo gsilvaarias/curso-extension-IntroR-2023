@@ -364,9 +364,6 @@ cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "kendall")$e
 ```
 **Ejercicio**
 Correlacionar dos variables "bill_length_mm" y "bill_depth_mm"
-```{r pressure, echo=FALSE}
-
-```
 
 # Escribiendo funciones propias <a name = "funciones_propias"></a>
 (Material utilizado de: https://es.r4ds.hadley.nz/19-functions.html)
