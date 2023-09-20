@@ -10,13 +10,10 @@ output: html_document
 
 - [Conceptos clave](#conceptos)
 - [Estadística Descriptiva](#estadistica_descriptiva)
-  - [Moda](#Moda)
-  - [Media](#Media)
-    - [Uso de Trim](#Aplicacion_de_la_opcion_Trim)
-    - [Con datos faltantes](#Aplicacion_de_la_opcion_NA)
-    - [Ejemplo](#Ejemplo_NA)
-  - [Mediana](#Mediana)
-- [Medidas de dispersión](#Medidas_de_dispersion)
+  - [Moda](#moda)
+  - [Media](#media)
+  - [Mediana](#mediana)
+- [Medidas de dispersión](#medidas_de_dispersion)
 - [Rango](#Rango)
 - [Variancia](#Variancia)
 - [Desviación estandar](#Desviacion_estandar)
@@ -60,7 +57,7 @@ Es un número ubicado hacia el centro de la distribución de los valores de una 
             - la media
             - la mediana
 
-# Moda <a name = "Moda"></a>           
+## Moda <a name = "moda"></a>          
 La moda es el valor que tiene el mayor numero de ocurrencias en un conjunto de datos. Para determinar la moda, podemos usar la funcion mfv(). Para esto, primero debes intalar el paquete "modeest" y cargarlo:
 
 ```{r pressure, echo=FALSE}
@@ -73,7 +70,7 @@ Una vez hayas cargado el paquete "modeest" puedes calcular la moda así:
 mfv(x)
 ```
 
-# Media <a name = "Media"></a>
+## Media <a name = "media"></a>
 La media o promedio representa la distribucion equitativa de los datos si la suma total se repartiera por igual. Se calcula tomando la suma de los valores y dividiendola por el numero de valores de una serie de datos.
 
 Podemos calcular la media "manualmente", calculando la suma total de la muestra y dividiendo por su tamaño, como se indica a continuación:
@@ -95,7 +92,7 @@ También se puede obtener la media de los datos utilizamos la función mean()
 mean(x)  
 ```
 
-## Aplicación del argumento Trim <a name = "Aplicacion_de_la_opcion_Trim"></a>
+**Aplicación del argumento Trim**
 R tiene la capacidad de calcular la media recortada utilizando el argumento "trim". A través del argumento "trim", se especifica el porcentaje de valores que se deben recortar en cada extremo antes de calcular la media.
 
 En este caso, si tenemos el vector ordenado es c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54), dependiendo del valor especificado en "trim", se pueden obtener los siguientes valores de promedio recortado:
@@ -116,13 +113,13 @@ mean(x1, trim=0.2)    #equivale al mean(x3)
 mean(x1, trim=0.3)    #equivale al mean(x4)
 ```
 
-## Aplicación del argumento NA <a name = "Aplicacion_de_la_opcion_NA"></a>
+**Aplicación del argumento NA**
 
 Si faltan valores, la función media devuelve NA.
 
 Para eliminar los valores faltantes del vector, se puede utilizar el argumento "na.rm = TRUE", lo que significa eliminar los valores NA del vector.
 
-# Ejemplo <a name = "Ejemplo_NA"></a>
+**Ejemplo**
 Revisemos un ejemplo:
 
 - Agregar valor NA en la posición 11 de vector x
@@ -147,12 +144,12 @@ result.mean <-  mean(x,na.rm = TRUE)
 print(result.mean)
 ```
 
-# Mediana <a name = "Mediana"></a>
+## Mediana <a name = "mediana"></a>
 La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. La mediana podemos determinarla con la funcion median()
 ```{r pressure, echo=FALSE}
 median(x)  
 ```
-## Medidas de dispersion <a name = "Medidas_de_disperion"></a>
+# Medidas de dispersion <a name = "medidas_de_disperion"></a>
 Las medidas de dispersión tratan, a través del cálculo de diferentes fórmulas, de arrojar un valor numérico que ofrezca información sobre el grado de variabilidad de una variable.
 
 ## Rango <a name = "Rango"></a>
