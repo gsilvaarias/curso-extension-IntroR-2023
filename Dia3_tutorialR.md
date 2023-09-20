@@ -99,7 +99,7 @@ También se puede obtener la media de los datos utilizamos la función mean()
 mean(x)  
 ```
 
-## Aplicación de la opcion Trim <a name = "Aplicacion de la opcion Trim"></a>
+## Aplicación del argumento Trim <a name = "Aplicacion de la opcion Trim"></a>
 R tiene la capacidad de calcular la media recortada utilizando el argumento "trim". A través del argumento "trim", se especifica el porcentaje de valores que se deben recortar en cada extremo antes de calcular la media.
 
 En este caso, si tenemos el vector ordenado es c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54), dependiendo del valor especificado en "trim", se pueden obtener los siguientes valores de promedio recortado: 
@@ -120,7 +120,7 @@ mean(x1, trim=0.2)    #equivale al mean(x3)
 mean(x1, trim=0.3)    #equivale al mean(x4)
 ```
 
-## Aplicacion de la opcion NA <a name = "Aplicacion de la opcion NA"></a>
+## Aplicacion del argumento NA <a name = "Aplicacion de la opcion NA"></a>
 
 Si faltan valores, la función media devuelve NA.
 
@@ -178,53 +178,33 @@ Si utilizamos la función `range()` nos mostrará el dato máximo y dato minimo 
 ```{r pressure, echo=FALSE}
 range()
 ```
-
-# Desviación estándar <a name = "Desviacion_estandar"></a>
-
 ## Varianza <a name = "Varianza"></a>
 
-- La varianza representa la variabilidad de una serie de datos respecto a su media.
-
-- La desviación estándar es la raíz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza.
-
-
-Para determinar cuantiles de la muestra utilizamos la función `quantile()`
+La varianza representa la variabilidad de una serie de datos respecto a su media. Calculamos la varianza utilizando la función `var()`
 
 ```{r pressure, echo=FALSE}
-
-```
-utiliza la función `quantile()` y elimines los NA
-
-```{r pressure, echo=FALSE}
-
+var()
 ```
 
-
-Calculamos la varianza utilizando la función `var()`
-
-```{r pressure, echo=FALSE}
-
-```
-
-Calculamos la desviación estándar usando la función `sd()`
+# Desviación estándar <a name = "Desviacion_estandar"></a>
+La desviación estándar es la raíz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza. Calculamos la desviación estándar usando la función `sd()`
 
 ```{r pressure, echo=FALSE}
-
+sd() 
 ```
 
 Otra forma de calcular la desviación estandar, seria la siguiente:
-
 ```{r pressure, echo=FALSE}
 sqrt_vec <- sqrt(var(x))  
 sqrt_vec
 ```
+
 ## Medidas de localización <a name = "Medidas_de_disperion"></a>
-Otras medidas muy utilizadas para describir los datos, son las medidas de localización donde se destacan los quantiles (cuartiles, deciles, percentiles), quienes tienen como función informar qué posición ocupará el dato de interés respecto a todo el conjunto de datos. Los cuantiles son el resultado de dividir los datos en fracciones de igual tamaño, de esta forma, si hablamos de cuartiles, significa que dividimos la muestra en cuatro; si hablamos de quintiles, significa que dividimos la muestra en cinco; si hablamos de deciles, en diez, y si hablamos de percentiles, en 100. variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Por ejemplo:
+Otras medidas muy utilizadas para describir los datos, son las medidas de localización donde se destacan los quantiles (cuartiles, deciles, percentiles), quienes tienen como función informar qué posición ocupará el dato de interés respecto a todo el conjunto de datos. Los cuantiles son el resultado de dividir los datos en fracciones de igual tamaño, de esta forma, si hablamos de cuartiles, significa que dividimos la muestra en cuatro; si hablamos de quintiles, significa que dividimos la muestra en cinco; si hablamos de deciles, en diez, y si hablamos de percentiles, en 100. variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Para determinar cuantiles de la muestra utilizamos la función `quantile()`, por ejemplo:
 
 ```{r pressure, echo=FALSE}
 quantile(x, probs=c(0, 0.2, 0.4, 0.6, 0.8, 1))  
 ```
-
 
 ### Ejercicios <a name = "Ejercicios"></a>
 Ahora hagamos un ejercicio
@@ -237,7 +217,7 @@ Primero cargamos el set de datos desde el directorio de trabajo. Utilizamos `hea
 penguins<-read.table("./CursoR_2023/Datos/penguins_matrix.txt", header=T)
 penguins
 ```
-Vamos a seleccionar una columna (bill_length_mm)
+Vamos a seleccionar la columna (bill_length_mm)
 
 ```{r presure, echo=FALSE}
 bill_length <- penguins$bill_length_mm
