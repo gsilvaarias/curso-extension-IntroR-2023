@@ -275,9 +275,9 @@ Un ejemplo sencillo de regresión es predecir el peso (variable dependiente - y)
 
 ### Ejemplo:
 ```{r pressure, echo=FALSE}
-alt <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)   # Ingreso de valores de altura
+altura <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)   # Ingreso de valores de altura
 peso <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)            # Ingreso de valores de peso
-fit <- lm(peso~alt)                                          # Generación del modelo
+fit <- lm(peso~altura)                                          # Generación del modelo
 summary(fit)                                                 # Impresión y resumen del modelo
 ```
 # Función predict() <a name = "Funcion_predict"></a>
