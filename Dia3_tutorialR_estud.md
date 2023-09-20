@@ -193,12 +193,8 @@ quantile(x, probs=c(seq(0,1,0.10)))   #para deciles
 Ahora hagamos el siguiente ejercicio:
 
 - Cargar los datos:
-Primero cargamos el set de datos desde el directorio de trabajo. No olvides utilizar `header=TRUE` para indicar que la primera fila del archivo corresponde al nombre de las variables.
+Primero cargamos el set de datos desde el directorio de trabajo. Debes llamarlo: "penguins". No olvides utilizar `header=TRUE` para indicar que la primera fila del archivo corresponde al nombre de las variables.
 
-```{r pressure, echo=FALSE}
-penguins<-read.table("./CursoR_2023/Datos/penguins_matrix.txt", header=T)
-penguins
-```
 Vamos a seleccionar la columna (bill_length_mm)
 
 ```{r presure, echo=FALSE}
