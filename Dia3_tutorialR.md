@@ -1,5 +1,5 @@
 ---
-title: "Estadistica en R"
+title: "Estadística en R"
 date: "20/09/2023"
 output: html_document
 
@@ -7,7 +7,7 @@ output: html_document
 ### Indice
 
 - [Conceptos clave](#conceptos)
-- [Estadistica Descriptiva](#estadistica_descriptiva)
+- [Estadística Descriptiva](#estadística_descriptiva)
 - [Medidas de tendencia central](#Medidas_de_tendencia_central)
 - [Moda](#Moda)
 - [Media](#Media)
@@ -41,11 +41,11 @@ output: html_document
 # Dia 3 - Estadística en R
 
 # Conceptos clave <a name = "conceptos"></a>
-La estadistica es la disciplina que estudia la variabilidad, recolección, organización, análisis, interpretación y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
+La estadística es la disciplina que estudia la variabilidad, recolección, organización, análisis, interpretación y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
 
-Puede clasificarse en dos tipos, descriptiva e inferencial. La estad?stica descriptiva es la metodologia que se emplea para caracterizar un conjunto de datos. Sin embargo, no podemos extraer conclusiones debido a la variabilidad de las muestras. La estadistica inferencial complementa a la descriptiva permitiendo sacar conclusiones extrapolables a la poblacion gracias al empleo de metodos probabilisticos.
+Puede clasificarse en dos tipos, descriptiva e inferencial. La estad?stica descriptiva es la metodologia que se emplea para caracterizar un conjunto de datos. Sin embargo, no podemos extraer conclusiones debido a la variabilidad de las muestras. La estadística inferencial complementa a la descriptiva permitiendo sacar conclusiones extrapolables a la poblacion gracias al empleo de metodos probabilisticos.
 
-# Estadistica  descriptiva <a name = "estadistica descriptiva"></a>
+# Estadística  descriptiva <a name = "estadística descriptiva"></a>
 Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas o gráficos y calcular parámetros básicos sobre el conjunto de datos.
 
 Comencemos definiendo una variable que contiene una secuencia de 34 numeros ¡Esta sera nuestra muestra!. Recuerda que para ingresar la secuencia en R debemos crear un vector, así:
@@ -102,23 +102,29 @@ mean(x)
 ## Aplicación de la opcion Trim <a name = "Aplicacion de la opcion Trim"></a>
 R tiene la capacidad de calcular la media recortada utilizando el argumento "trim". A través del argumento "trim", se especifica el porcentaje de valores que se deben recortar en cada extremo antes de calcular la media.
 
-En este caso, el vector ordenado es (-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54) y los valores eliminados del vector para calcular la media son (-21,-5,2) desde la izquierda y (12,18,54) desde la derecha.
+En este caso, si tenemos el vector ordenado es c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54), dependiendo del valor especificado en "trim", se pueden obtener los siguientes valores de promedio recortado: 
 
 - Crear un vector
 ```{r pressure, echo=FALSE}
-x <- c(12,7,3,4.2,18,2,54,-21,8,-5)
-```
+x1 <- c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54)  #Vector completo y ordenado
+mean(x1)
+x2 <- c(-5, 2, 3, 4.2, 7, 8, 12, 18)  # vector sin 2 valores extremos (un inferior - un superior)
+mean(x2)
+x3 <- c(2, 3, 4.2, 7, 8, 12)          # vector sin 4 valores extremos 
+mean(x3)
+x4 <- c(3, 4.2, 7, 8)                 # vector sin 6 valores extremos 
+mean(x4)
 
-- Encontrar la media
-```{r pressure, echo=FALSE}
-result.mean <-  mean(x,trim = 0.3)
+mean(x1, trim=0.1)    #equivale al mean(x2)
+mean(x1, trim=0.2)    #equivale al mean(x3)
+mean(x1, trim=0.3)    #equivale al mean(x4)
 ```
 
 ## Aplicacion de la opcion NA <a name = "Aplicacion de la opcion NA"></a>
 
 Si faltan valores, la función media devuelve NA.
 
-Para eliminar los valores que faltan del calculo, utilizar na.rm = TRUE, lo que significa eliminar los valores NA.
+Para eliminar los valores faltantes del vector, se puede utilizar el argumento "na.rm = TRUE", lo que significa eliminar los valores NA del vector.
 
 # Ejemplo <a name = "Ejemplo"></a>
 Revisemos un ejemplo:
