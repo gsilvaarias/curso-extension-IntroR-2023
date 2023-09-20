@@ -317,10 +317,10 @@ La distribución normal, que recibe los nombres de distribución gaussiana o cur
 
 R tiene cuatro funciones relacionadas con la distribución normal:
 
-dnorm(x, media, sd) : presenta la función de densidad en el punto x en una distribución normal de parámetros x y sd.
-pnorm(x, media, sd) : indica el área bajo la curva en el punto x en una distribución normal de parámetros x y sd.
-qnorm(p, media, sd) : indica el quantil asociado a la probabilidad p en una distribución normal de parámetros x y sd.
-rnorm(n, media, sd) : genera una muestra aleatoria con distribución normal.
+- dnorm(x, media, sd) : presenta la función de densidad en el punto x en una distribución normal de parámetros x y sd.
+- pnorm(x, media, sd) : indica el área bajo la curva en el punto x en una distribución normal de parámetros x y sd.
+- qnorm(p, media, sd) : indica el quantil asociado a la probabilidad p en una distribución normal de parámetros x y sd.
+- rnorm(n, media, sd) : genera una muestra aleatoria con distribución normal.
 
 Solo nos enfocaremos en aprender a utilizar la función `rnorm` pues la explicación de las otras funciones esta fuera del alcance de este curso. En este ejemplo, crearemos 100 datos aleatorios con media como 2,5 y la desviación típica como 0,5, así:
 
