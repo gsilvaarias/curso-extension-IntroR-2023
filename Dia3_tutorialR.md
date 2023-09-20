@@ -152,12 +152,7 @@ print(result.mean)
 ```
 
 # Mediana <a name = "Mediana"></a>
-La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. 
-
-# Ejemplo - Medidas de tendencia central></a>
-
-
-- La mediana podemos determinarla con la funcion median()
+La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. La mediana podemos determinarla con la funcion median()
 
 ```{r pressure, echo=FALSE}
 ?median()
@@ -170,8 +165,19 @@ Las medidas de dispersión tratan, a través del cálculo de diferentes fórmula
 
 ## Rango <a name = "Rango"></a>
 
-El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar son algunas de las medidas que empleadas habitualmente para describir la variabilidad de la muestra.
-- El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor máximo y mínimo de nuestra muestra.
+El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar son algunas de las medidas que empleadas habitualmente para describir la dispersión de la muestra. El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor máximo y mínimo de nuestra muestra. 
+
+Podemos calcular el rango "manualmente", encontrando el dato máximo de los datos y restando el dato mínimo, así:
+
+```{r pressure, echo=FALSE}
+max() - min()
+```
+
+Si utilizamos la función `range()` nos mostrará el dato máximo y dato minimo de los datos, sin embago, debes tener en cuenta que esta función no encuentra la diferencia:
+
+```{r pressure, echo=FALSE}
+range()
+```
 
 # Desviación estándar <a name = "Desviacion_estandar"></a>
 
@@ -181,13 +187,6 @@ El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar
 
 - La desviación estándar es la raíz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza.
 
-Para determinar el rango en e cual se dispersa nuestra muestra, utilizamos la función `range()`
-
-```{r pressure, echo=FALSE}
-
-```
-
-El rango se ve muy afectado por los valores máximos y mínimos. Para resolver este problema se utilizan los Quantiles (cuartiles, deciles, percentiles), que son medidas de localización, que tienen como función informar del valor de la variable que ocupara la posición (en tanto por cien) que nos interese respecto a todo el conjunto de datos. Es el resultado de dividir los datos en fracciones de igual tamaño. Nos ayudan a ver la concentración de datos, dependiendo de los parámetros de la función.
 
 Para determinar cuantiles de la muestra utilizamos la función `quantile()`
 
@@ -200,11 +199,6 @@ utiliza la función `quantile()` y elimines los NA
 
 ```
 
-variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Por ejemplo:
-
-```{r pressure, echo=FALSE}
-quantile(x, probs=c(0, 0.2, 0.4, 0.6, 0.8, 1))  
-```
 
 Calculamos la varianza utilizando la función `var()`
 
@@ -224,6 +218,13 @@ Otra forma de calcular la desviación estandar, seria la siguiente:
 sqrt_vec <- sqrt(var(x))  
 sqrt_vec
 ```
+## Medidas de localización <a name = "Medidas_de_disperion"></a>
+Otras medidas muy utilizadas para describir los datos, son las medidas de localización donde se destacan los quantiles (cuartiles, deciles, percentiles), quienes tienen como función informar qué posición ocupará el dato de interés respecto a todo el conjunto de datos. Los cuantiles son el resultado de dividir los datos en fracciones de igual tamaño, de esta forma, si hablamos de cuartiles, significa que dividimos la muestra en cuatro; si hablamos de quintiles, significa que dividimos la muestra en cinco; si hablamos de deciles, en diez, y si hablamos de percentiles, en 100. variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Por ejemplo:
+
+```{r pressure, echo=FALSE}
+quantile(x, probs=c(0, 0.2, 0.4, 0.6, 0.8, 1))  
+```
+
 
 ### Ejercicios <a name = "Ejercicios"></a>
 Ahora hagamos un ejercicio
