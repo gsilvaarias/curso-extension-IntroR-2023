@@ -4,17 +4,19 @@ date: "20/09/2023"
 output: html_document
 
 ---
+# Día 3 - Estadística en R
+
 ### Indice
 
 - [Conceptos clave](#conceptos)
-- [Estadística Descriptiva](#estadística_descriptiva)
+- [Estadística Descriptiva](#estadistica_descriptiva)
 - [Medidas de tendencia central](#Medidas_de_tendencia_central)
   - [Moda](#Moda)
   - [Media](#Media)
+    - [Uso de Trim](#Aplicacion_de_la_opcion_Trim)
+    - [Con datos faltantes](#Aplicacion_de_la_opcion_NA)
+    - [Ejemplo](#Ejemplo_NA)
   - [Mediana](#Mediana)
-- [Uso de Trim](#Aplicacion_de_la_opcion_Trim)
-- [Con datos faltantes](#Aplicacion_de_la_opcion_NA)
-  - [Ejemplo](#Ejemplo_NA)
 - [Medidas de dispersión](#Medidas_de_dispersion)
 - [Rango](#Rango)
 - [Variancia](#Variancia)
@@ -38,14 +40,12 @@ output: html_document
 - [Escribiendo funciones propias](#funciones_propias)
 
 
-# Dia 3 - Estadística en R
-
 # Conceptos clave <a name = "conceptos"></a>
 La estadística es la disciplina que estudia la variabilidad, recolección, organización, análisis, interpretación y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
 
 Puede clasificarse en dos tipos, descriptiva e inferencial. La estad?stica descriptiva es la metodologia que se emplea para caracterizar un conjunto de datos. Sin embargo, no podemos extraer conclusiones debido a la variabilidad de las muestras. La estadística inferencial complementa a la descriptiva permitiendo sacar conclusiones extrapolables a la poblacion gracias al empleo de metodos probabilisticos.
 
-# Estadística  descriptiva <a name = "estadística descriptiva"></a>
+# Estadística  descriptiva <a name = "estadistica_descriptiva"></a>
 Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas o gráficos y calcular parámetros básicos sobre el conjunto de datos.
 
 Comencemos definiendo una variable que contiene una secuencia de 34 numeros ¡Esta sera nuestra muestra!. Recuerda que para ingresar la secuencia en R debemos crear un vector, así:
@@ -55,11 +55,11 @@ x <-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137,
 x
 ```
 
-# Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
+# Medidas de tendencia central <a name = "Medidas_de_tendencia_central"></a>
 Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
-            -la moda
-            -la media
-            -la mediana
+            - la moda
+            - la media
+            - la mediana
 
 # Moda <a name = "Moda"></a>           
 La moda es el valor que tiene el mayor numero de ocurrencias en un conjunto de datos. Para determinar la moda, podemos usar la funcion mfv(). Para esto, primero debes intalar el paquete "modeest" y cargarlo:
@@ -75,7 +75,7 @@ mfv(x)
 ```
 
 # Media <a name = "Media"></a>
-La media o promedio representa la distribucion equitativa de los datos si la suma total se repartiera por igual. Se calcula tomando la suma de los valores y dividiendola por el numero de valores de una serie de datos. 
+La media o promedio representa la distribucion equitativa de los datos si la suma total se repartiera por igual. Se calcula tomando la suma de los valores y dividiendola por el numero de valores de una serie de datos.
 
 Podemos calcular la media "manualmente", calculando la suma total de la muestra y dividiendo por su tamaño, como se indica a continuación:
 
@@ -96,10 +96,10 @@ También se puede obtener la media de los datos utilizamos la función mean()
 mean(x)  
 ```
 
-## Aplicación del argumento Trim <a name = "Aplicacion de la opcion Trim"></a>
+## Aplicación del argumento Trim <a name = "Aplicacion_de_la_opcion_Trim"></a>
 R tiene la capacidad de calcular la media recortada utilizando el argumento "trim". A través del argumento "trim", se especifica el porcentaje de valores que se deben recortar en cada extremo antes de calcular la media.
 
-En este caso, si tenemos el vector ordenado es c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54), dependiendo del valor especificado en "trim", se pueden obtener los siguientes valores de promedio recortado: 
+En este caso, si tenemos el vector ordenado es c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54), dependiendo del valor especificado en "trim", se pueden obtener los siguientes valores de promedio recortado:
 
 - Crear un vector
 ```{r pressure, echo=FALSE}
@@ -107,9 +107,9 @@ x1 <- c(-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54)  #Vector completo y ordenado
 mean(x1)
 x2 <- c(-5, 2, 3, 4.2, 7, 8, 12, 18)  # vector sin 2 valores extremos (un inferior - un superior)
 mean(x2)
-x3 <- c(2, 3, 4.2, 7, 8, 12)          # vector sin 4 valores extremos 
+x3 <- c(2, 3, 4.2, 7, 8, 12)          # vector sin 4 valores extremos
 mean(x3)
-x4 <- c(3, 4.2, 7, 8)                 # vector sin 6 valores extremos 
+x4 <- c(3, 4.2, 7, 8)                 # vector sin 6 valores extremos
 mean(x4)
 
 mean(x1, trim=0.1)    #equivale al mean(x2)
@@ -117,16 +117,16 @@ mean(x1, trim=0.2)    #equivale al mean(x3)
 mean(x1, trim=0.3)    #equivale al mean(x4)
 ```
 
-## Aplicacion del argumento NA <a name = "Aplicacion de la opcion NA"></a>
+## Aplicación del argumento NA <a name = "Aplicacion_de_la_opcion_NA"></a>
 
 Si faltan valores, la función media devuelve NA.
 
 Para eliminar los valores faltantes del vector, se puede utilizar el argumento "na.rm = TRUE", lo que significa eliminar los valores NA del vector.
 
-# Ejemplo <a name = "Ejemplo"></a>
+# Ejemplo <a name = "Ejemplo_NA"></a>
 Revisemos un ejemplo:
 
-- Agregar valor NA en la posicion 11 de vector x
+- Agregar valor NA en la posición 11 de vector x
 
 ```{r pressure, echo=FALSE}
 x[11] <- NA
@@ -158,7 +158,7 @@ Las medidas de dispersión tratan, a través del cálculo de diferentes fórmula
 
 ## Rango <a name = "Rango"></a>
 
-El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar son algunas de las medidas que empleadas habitualmente para describir la dispersión de la muestra. El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor máximo y mínimo de nuestra muestra. 
+El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar son algunas de las medidas que empleadas habitualmente para describir la dispersión de la muestra. El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor máximo y mínimo de nuestra muestra.
 
 Podemos calcular el rango "manualmente", encontrando el dato máximo de los datos y restando el dato mínimo, así:
 
@@ -183,7 +183,7 @@ var()
 La desviación estándar es la raíz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza. Calculamos la desviación estándar usando la función `sd()`
 
 ```{r pressure, echo=FALSE}
-sd() 
+sd()
 ```
 
 Otra forma de calcular la desviación estandar, seria la siguiente:
@@ -199,7 +199,7 @@ Otras medidas muy utilizadas para describir los datos, son las medidas de locali
 p=0.25   #para cuartiles
 p=0.20   #para quintiles
 p=0.10   #para deciles
-quantile(x, probs=c(seq(0,1,p))) 
+quantile(x, probs=c(seq(0,1,p)))
 ```
 
 ### Ejercicios <a name = "Ejercicios"></a>
@@ -262,7 +262,7 @@ t.test(flipper_length,body_mass, var.equal = F, mu=200, conf.level = 1-alfa, alt
 
 # Regresión lineal <a name = "Regresion_lineal"></a>
 
-El análisis de regresión es una herramienta estadística muy utilizada para establecer un modelo lineal de relación entre variables: las variables independientes (x) y la variable dependiente (y) que debe ser una variable continua. 
+El análisis de regresión es una herramienta estadística muy utilizada para establecer un modelo lineal de relación entre variables: las variables independientes (x) y la variable dependiente (y) que debe ser una variable continua.
 
 Nota aclaratoria: Hay dos tipos de variable: Continua y discreta. Una variable continua es aquella que admite decimales por naturaleza (Ejemplos: el pH, el peso, la masa). En cambio, una variable discreta es aquella que no tiene sentido escribirla con decimales, es decir, no podemos hablar de 2 personas y media.
 
@@ -274,7 +274,7 @@ El modelo matemático general para una regresión lineal es: y = b + ax
 ### Pasos para establecer una regresión
 Un ejemplo sencillo de regresión es predecir el peso (variable dependiente - y) de una persona cuando se conoce su altura (variable independiente - x). Para ello necesitamos tener la relación entre la altura y el peso de una persona. Para hacer un modelo de regresión se utiliza la función `lm()` la cual crea el modelo de relación entre la variable independiente `x` y la variable de respuesta `y`, así:
 
-### Ejemplo: 
+### Ejemplo:
 ```{r pressure, echo=FALSE}
 alt <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)   # Ingreso de valores de altura
 peso <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)            # Ingreso de valores de peso
@@ -302,7 +302,7 @@ table <- cbind(data,pred)
 1. Realiza un gráfico de dispersion con el fin de conocer las relaciones existentes entre las variables "flipper_length_mm" y "body_mass_g"
 2. Calcula el modelo lineal para las variables "flipper_length_mm" (variable dependiente) y "body_mass_g" (variable independiente).
 3. Haz una predicción de la longitud de las aletas: Crea un data frame con nuevos valores para "body_mass": `2665,2690,6325,6400,6339,2676`, así:
-    
+
 ```{r pressure, echo=FALSE}
 new <- data.frame("body_mass" = c(2665,2690,6325,6400,6339,2676))
 ```
@@ -313,7 +313,7 @@ La distribución normal, que recibe los nombres de distribución gaussiana o cur
 - Forma de campana: La gráfica de una distribución normal tiene una forma de campana, siendo simétrica alrededor de su media. Esto significa que la mayoría de los datos se concentran cerca de la media, y a medida que nos alejamos de la media hacia los extremos, la frecuencia de observaciones disminuye gradualmente.
 - Media, mediana y Moda iguales.
 - 68-95-99.7 Regla: En una distribución normal, aproximadamente el 68% de los datos se encuentra dentro de una desviación estándar de la media, el 95% se encuentra dentro de dos desviaciones estándar, y el 99.7% se encuentra dentro de tres desviaciones estándar.
-- Asíntota: 
+- Asíntota:
 
 R tiene cuatro funciones relacionadas con la distribución normal:
 
@@ -357,7 +357,7 @@ chisq.test(na.omit(penguins$body_mass_g))
 
 # Coeficientes de correlación <a name = "Coeficientes_de_correlacion"></a>
 
-El coeficiente de correlación se utiliza para cuantificar la relación o asociación entre dos variables cuantitativas en un conjunto de datos. El coeficiente de correlación puede tomar un rango de valores de +1 a -1. Un valor de 0 indica que no hay asociación entre las dos variables. Un valor mayor que 0 indica una asociación positiva. Es decir, a medida que aumenta el valor de una variable, también lo hace el valor de la otra. Un valor menor que 0 indica una asociación negativa, es decir, a medida que aumenta el valor de una variable, el valor de la otra disminuye. Hay varios tipos de coeficientes de correlación, pero los dos más comunes son: 
+El coeficiente de correlación se utiliza para cuantificar la relación o asociación entre dos variables cuantitativas en un conjunto de datos. El coeficiente de correlación puede tomar un rango de valores de +1 a -1. Un valor de 0 indica que no hay asociación entre las dos variables. Un valor mayor que 0 indica una asociación positiva. Es decir, a medida que aumenta el valor de una variable, también lo hace el valor de la otra. Un valor menor que 0 indica una asociación negativa, es decir, a medida que aumenta el valor de una variable, el valor de la otra disminuye. Hay varios tipos de coeficientes de correlación, pero los dos más comunes son:
 - Coeficiente de correlación de Pearson (r) que se utiliza cuando la relación es lineal.
 - Coeficiente de correlación de Spearman (ρ) aplicado cuando la relación no es lineal o los datos no tienen una distribución normal.
 - Coeficiente de correlación de Kendal aplicado para evaluar la asociación entre dos variables ordenadas.
