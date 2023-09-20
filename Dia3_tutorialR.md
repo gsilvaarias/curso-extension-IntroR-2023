@@ -347,27 +347,21 @@ Para realizar la prueba de Coeficiente de Correlación de Pearson se usa la func
 **Ejemplo**
 A seguir algunos ejemplos
 ```{r pressure, echo=FALSE}
-cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "pearson", alternative = "greater")
+cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "pearson")$estimate
 ```
 
 Forma de acceder a los resultados
 ```{r pressure, echo=FALSE}
-cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "pearson", alternative = "greater")$estimate
+cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "pearson")$estimate
 ```
 
 ```{r pressure, echo=FALSE}
-cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "spearman", alternative = "greater")
+cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "spearman")$estimate
 ```
 
 ```{r pressure, echo=FALSE}
-cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "kendall", alternative = "greater")
+cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "kendall")$estimate
 ```
-
-**Saber si existen valores NA**
-```{r pressure, echo=FALSE}
-which(is.na(penguins$flipper_length_mm))
-```
-
 **Ejercicio**
 Correlacionar dos variables "bill_length_mm" y "bill_depth_mm"
 ```{r pressure, echo=FALSE}
