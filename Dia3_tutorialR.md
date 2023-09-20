@@ -7,6 +7,7 @@ output: html_document
 ### Indice
 
 - [Conceptos clave](#conceptos)
+<<<<<<< HEAD
 - [Estadistica Descriptiva](#estadistica_descriptiva)
 - [Medidas de tendencia central](#Medidas_de_tendencia_central)
 - [Moda](#Moda)
@@ -36,18 +37,58 @@ output: html_document
   - [Valores NA](#Valores_NA)
   - [Ejercicio coeficiente correlación](#Ejercicio)
 - [Escribiendo funciones propias](#funciones_propias)
+=======
+- [Estadistica](#estadistica descriptiva)
+- [Estadistica](#Medidas de tendencia central)
+- [Estadistica](#Moda)
+- [Estadistica](#Media)
+- [Estadistica](#Mediana)
+- [Estadistica](#Aplicacion de la opcion Trim)
+- [Estadistica](#Aplicacion de la opcion NA)
+- [Estadistica](#Ejemplo)
+- [Estadistica](#Medidas de dispersion)
+- [Estadistica](#Rango)
+- [Estadistica](#Varianza)
+- [Estadistica](#Desviacion estandar)
+- [Estadistica](#Ejercicios)
+- [Estadistica](#Prueba t)
+- [Estadistica](#Ejercicio)
+- [Estadistica](#Regresion lineal)
+- [Estadistica](#Funcion lm)
+- [Estadistica](#Funcion predict)
+- [Estadistica](#Ejercicio)
+- [Estadistica](#Hacer predicciones)
+- [Estadistica](#Distribuicion normal)
+- [Estadistica](#Chi cuadrado)
+- [Estadistica](#Ejemplo)
+- [Estadistica](#Ejercicio)
+- [Estadistica](#Coeficientes de correlacion)
+- [Estadistica](#Ejemplo)
+- [Estadistica](#Valores NA)
+- [Estadistica](#Ejercicio)
+
+
+
+>>>>>>> refs/remotes/origin/main
 
 # Dia 3 - Estadisitca en R
 
-## Conceptos clave <a name = "conceptos"></a>
+# Conceptos clave <a name = "conceptos"></a>
 La estadistica es la disciplina que estudia la variabilidad, recolección, organización, análisis, interpretación y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
 
 Puede clasificarse en dos tipos, descriptiva e inferencial. La estad?stica descriptiva es la metodologia que se emplea para caracterizar un conjunto de datos. Sin embargo, no podemos extraer conclusiones debido a la variabilidad de las muestras. La estadistica inferencial complementa a la descriptiva permitiendo sacar conclusiones extrapolables a la poblacion gracias al empleo de metodos probabilisticos.
 
+<<<<<<< HEAD
 ## Estadistica  descriptiva <a name = "estadistica_descriptiva"></a>
 Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas o gráficos y calcular parámetros básicos sobre el conjunto de datos.
 
 ## Medidas de tendencia central <a name = "Medidas_de_tendencia_central"></a>
+=======
+# Estadistica  descriptiva <a name = "estadistica descriptiva"></a>
+Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas o gráficos y calcular parámetros básicos sobre el conjunto de datos.
+
+# Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
+>>>>>>> refs/remotes/origin/main
 Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
             -la moda
             -la media
@@ -62,14 +103,21 @@ La media representa la distribucion equitativa de los datos si la suma total se 
 # Mediana <a name = "Mediana"></a>
 La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana.
 
-Comencemos definiendo una variable que contiene una secuencia de 34 numeros. ¡Esta sera nuestra muestra!
+# Ejemplo - Medidas de tendencia central></a>
+Comencemos definiendo una variable que contiene una secuencia de 34 numeros ¡Esta sera nuestra muestra!. Recuerda que para ingresar la secuencia en R debemos crear un vector, así:
 
 ```{r pressure, echo=FALSE}
 x<-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137, 138, 139, 140, 114, 142, 149, 143, 144, 145, 146, 147, 148, 133, 133, 133, 149, 150, 139, 152)
 x
 ```
+<<<<<<< HEAD
 
 Para conocer  tamaño de la muestra empleamos la función `length()`
+=======
+\begin{itemize}
+    \item Para conocer  tamaño de la muestra empleamos la funcion length()
+\end{itemize}
+>>>>>>> refs/remotes/origin/main
 
 ```{r presures, echo=FALSE}
 ?length
@@ -78,15 +126,27 @@ Para conocer  tamaño de la muestra empleamos la función `length()`
 length(x)
 ```
 
+<<<<<<< HEAD
 Una de las formas para determinar la moda es usando la función `mfv()`, instala el paquete "modeest" y lo cargue
+=======
+Para determinar la moda, podemos usar la funcion mfv(). Para esto, debes intalar el paquete "modeest" y cargarlo:
+
+>>>>>>> refs/remotes/origin/main
 ```{r pressure, echo=FALSE}
+install.packages("modeest")  #Comando para instalar el paquete "modeest"
+library ("modeest")          #Comando para cargar el paquete "modeest"
 ```
 
 Calcular la moda
 ```{r pressure, echo=FALSE}
-
+mfv(x)
 ```
+<<<<<<< HEAD
 Para obtener la media o promedio de los datos utilizamos `mean()`
+=======
+Para obtener la media o promedio de los datos utilizamos la función mean()
+
+>>>>>>> refs/remotes/origin/main
 ```{r pressure, echo=FALSE}
 ?mean()  
 ```
@@ -151,19 +211,31 @@ print(result.mean)
 median(x)  
 ```
 
+<<<<<<< HEAD
 ## Medidas de dispersion <a name = "Medidas_de_disperion"></a>
+=======
+# Medidas de dispersion <a name = "Medidas de disperion"></a>
+>>>>>>> refs/remotes/origin/main
 Las medidas de dispersión tratan, a través del cálculo de diferentes fórmulas, de arrojar un valor numérico que ofrezca información sobre el grado de variabilidad de una variable.
 
-# Rango <a name = "Rango"></a>
+## Rango <a name = "Rango"></a>
 
 El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar son algunas de las medidas que empleadas habitualmente para describir la variabilidad de la muestra.
 -El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor máximo y mínimo de nuestra muestra.
 
+<<<<<<< HEAD
 # Varianza <a name = "Variancia"></a>
 
 -La varianza representa la variabilidad de una serie de datos respecto a su media.
 
 # Desviación estándar <a name = "Desviacion_estandar"></a>
+=======
+## Varianza <a name = "Varianza"></a>
+
+-La varianza representa la variabilidad de una serie de datos respecto a su media. 
+
+## Desviacion estandar <a name = "Desviacion estandar"></a>
+>>>>>>> refs/remotes/origin/main
 
 -La desviación estándar es la raáz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza.
 
