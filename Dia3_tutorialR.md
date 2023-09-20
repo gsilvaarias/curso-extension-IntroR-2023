@@ -38,62 +38,60 @@ output: html_document
 - [Escribiendo funciones propias](#funciones_propias)
 
 
-# Dia 3 - Estadisitca en R
+# Dia 3 - Estadística en R
 
 # Conceptos clave <a name = "conceptos"></a>
 La estadistica es la disciplina que estudia la variabilidad, recolección, organización, análisis, interpretación y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
 
 Puede clasificarse en dos tipos, descriptiva e inferencial. La estad?stica descriptiva es la metodologia que se emplea para caracterizar un conjunto de datos. Sin embargo, no podemos extraer conclusiones debido a la variabilidad de las muestras. La estadistica inferencial complementa a la descriptiva permitiendo sacar conclusiones extrapolables a la poblacion gracias al empleo de metodos probabilisticos.
 
-## Estadistica  descriptiva <a name = "estadistica_descriptiva"></a>
+# Estadistica  descriptiva <a name = "estadistica descriptiva"></a>
 Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas o gráficos y calcular parámetros básicos sobre el conjunto de datos.
 
-# Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
-Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
-            - la moda
-            - la media
-            - la mediana
-
-# Moda <a name = "Moda"></a>           
-La moda es el valor que tiene el mayor numero de ocurrencias en un conjunto de datos.
-
-# Media <a name = "Media"></a>
-La media representa la distribucion equitativa de los datos si la suma total se repartiera por igual. Se calcula tomando la suma de los valores y dividiendola por el numero de valores de una serie de datos.
-
-# Mediana <a name = "Mediana"></a>
-La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana.
-
-# Ejemplo - Medidas de tendencia central></a>
 Comencemos definiendo una variable que contiene una secuencia de 34 numeros ¡Esta sera nuestra muestra!. Recuerda que para ingresar la secuencia en R debemos crear un vector, así:
 
 ```{r pressure, echo=FALSE}
 x<-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137, 138, 139, 140, 114, 142, 149, 143, 144, 145, 146, 147, 148, 133, 133, 133, 149, 150, 139, 152)
 x
 ```
-<<<<<<< HEAD
+# Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
+Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
+            -la moda
+            -la media
+            -la mediana
 
-Para conocer  tamaño de la muestra empleamos la función `length()`
+# Moda <a name = "Moda"></a>           
+La moda es el valor que tiene el mayor numero de ocurrencias en un conjunto de datos. Para determinar la moda, podemos usar la funcion mfv(). Para esto, primero debes intalar el paquete "modeest" y cargarlo:
+
+```{r pressure, echo=FALSE}
+install.packages("modeest")  #Comando para instalar el paquete "modeest"
+library ("modeest")          #Comando para cargar el paquete "modeest"
+```
+
+Una vez hayas cargado el paquete "modeest" puedes calcular la moda así:
+```{r pressure, echo=FALSE}
+mfv(x)
+```
+
+# Media <a name = "Media"></a>
+La media o promedio representa la distribucion equitativa de los datos si la suma total se repartiera por igual. Se calcula tomando la suma de los valores y dividiendola por el numero de valores de una serie de datos. 
+
+Podemos calcular la media "manualmente", calculando la suma total de la muestra y dividiendo por su tamaño, como se indica a continuación:
+
+Para conocer la suma total de la muestra, utilizamos la funcion sum()
+```{r presures, echo=FALSE}
+sum(x)
+```
+Para conocer  tamaño de la muestra empleamos la funcion length()
+
 ```{r presures, echo=FALSE}
 ?length
 ```
 ```{r presures, echo=FALSE}
 length(x)
 ```
+También se puede obtener la media de los datos utilizamos la función mean()
 
-Una de las formas para determinar la moda es usando la función `mfv()`, instala el paquete "modeest" y lo cargue
-
-Para determinar la moda, podemos usar la funcion mfv(). Para esto, debes intalar el paquete "modeest" y cargarlo:
-
-```{r pressure, echo=FALSE}
-
-```
-
-Calcular la moda
-```{r pressure, echo=FALSE}
-mfv(x)
-```
-
-Para obtener la media o promedio de los datos utilizamos `mean()`
 ```{r pressure, echo=FALSE}
 ?mean()  
 ```
@@ -101,10 +99,8 @@ Para obtener la media o promedio de los datos utilizamos `mean()`
 mean(x)  
 ```
 
-## Aplicación de la opción Trim <a name = "Aplicacion_de_la_opcion_Trim"></a>
-Cuando se suministra el parámetro trim, los valores del vector se ordenan y, a continuación, se elimina el numero necesario de observaciones del calculo de la media.
-
-Cuando trim = 0.3, se eliminarán 3 valores de cada extremo de los cálculos para hallar la media.
+## Aplicación de la opcion Trim <a name = "Aplicacion de la opcion Trim"></a>
+R tiene la capacidad de calcular la media recortada utilizando el argumento "trim". A través del argumento "trim", se especifica el porcentaje de valores que se deben recortar en cada extremo antes de calcular la media.
 
 En este caso, el vector ordenado es (-21, -5, 2, 3, 4.2, 7, 8, 12, 18, 54) y los valores eliminados del vector para calcular la media son (-21,-5,2) desde la izquierda y (12,18,54) desde la derecha.
 
@@ -118,16 +114,16 @@ x <- c(12,7,3,4.2,18,2,54,-21,8,-5)
 result.mean <-  mean(x,trim = 0.3)
 ```
 
-## Aplicación de la opción NA <a name = "Aplicacion_de_la_opcion NA"></a>
+## Aplicacion de la opcion NA <a name = "Aplicacion de la opcion NA"></a>
 
 Si faltan valores, la función media devuelve NA.
 
-Para eliminar los valores que faltan del calculo, utilizar `na.rm = TRUE`, lo que significa eliminar los valores NA.
+Para eliminar los valores que faltan del calculo, utilizar na.rm = TRUE, lo que significa eliminar los valores NA.
 
-### Ejemplo <a name = "Ejemplo"></a>
+# Ejemplo <a name = "Ejemplo"></a>
 Revisemos un ejemplo:
 
-- Agregar valor NA en la posición 11 del vector x
+- Agregar valor NA en la posicion 11 de vector x
 
 ```{r pressure, echo=FALSE}
 x[11] <- NA
@@ -145,11 +141,17 @@ print(result.mean)
 - Encontremos la media quitando los valores NA
 
 ```{r pressure, echo=FALSE}
-result.mean <-  mean(x, na.rm = TRUE)
+result.mean <-  mean(x,na.rm = TRUE)
 print(result.mean)
 ```
 
-- La mediana podemos determinarla con la función `median()`
+# Mediana <a name = "Mediana"></a>
+La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. 
+
+# Ejemplo - Medidas de tendencia central></a>
+
+
+- La mediana podemos determinarla con la funcion median()
 
 ```{r pressure, echo=FALSE}
 ?median()
@@ -157,7 +159,6 @@ print(result.mean)
 ```{r pressure, echo=FALSE}
 median(x)  
 ```
-
 ## Medidas de dispersion <a name = "Medidas_de_disperion"></a>
 Las medidas de dispersión tratan, a través del cálculo de diferentes fórmulas, de arrojar un valor numérico que ofrezca información sobre el grado de variabilidad de una variable.
 
