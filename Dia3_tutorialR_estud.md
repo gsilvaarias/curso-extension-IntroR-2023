@@ -14,25 +14,16 @@ output: html_document
   - [Media](#media)
   - [Mediana](#mediana)
 - [Medidas de dispersión](#medidas_de_dispersion)
-- [Rango](#Rango)
-- [Variancia](#Variancia)
-- [Desviación estandar](#Desviacion_estandar)
-  - [Ejercicios](#Ejercicio_sd)
-- [Prueba t](#Prueba_t)
-  - [Ejercicio](#Ejercicio_t)
-- [Regresión lineal](#Regresion_lineal)
-- [Función lm](#Funcion_lm)
-- [Función predict](#Funcion_predict)
-  - [Ejercicio](#Ejercicio_pre)
-- [Predicciones](#Hacer_predicciones)
-- [Distribuición normal](#Distribuicion_normal)
-- [Chi cuadrado](#Chi_cuadrado)
-  - [Ejemplo](#Ejemplo_chi)
-  - [Ejercicio](#Ejercicio_chi)
-- [Coeficientes de correlación](#Coeficientes_correlacion)
-  - [Ejemplo](#Ejemplo_cc)
-  - [Valores NA](#Valores_NA)
-  - [Ejercicio coeficiente correlación](#Ejercicio)
+  - [Rango](#rango)
+  - [Variancia](#variancia)
+  - [Desviación estandar](#desviacion_estandar)
+  - [Medidas de localización](#medidas_loc)
+- [Prueba t](#prueba_t)
+- [Regresión lineal](#regresion_lineal)
+- [Predicciones](#funcion_predict)
+- [Distribuición normal](#distribuicion_normal)
+- [Chi cuadrado](#chi_cuadrado)
+- [Coeficientes de correlación](#coeficientes_correlacion)
 - [Escribiendo funciones propias](#funciones_propias)
 
 
@@ -152,7 +143,7 @@ median(x)
 # Medidas de dispersion <a name = "medidas_de_disperion"></a>
 Las medidas de dispersión tratan, a través del cálculo de diferentes fórmulas, de arrojar un valor numérico que ofrezca información sobre el grado de variabilidad de una variable.
 
-## Rango <a name = "Rango"></a>
+## Rango <a name = "rango"></a>
 
 El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar son algunas de las medidas que empleadas habitualmente para describir la dispersión de la muestra. El rango se usa para conocer la cobertura de nuestros datos, siendo la medida del esparcimiento entre el valor máximo y mínimo de nuestra muestra.
 
@@ -167,7 +158,7 @@ Si utilizamos la función `range()` nos mostrará el dato máximo y dato minimo 
 ```{r pressure, echo=FALSE}
 range()
 ```
-## Varianza <a name = "Varianza"></a>
+## Varianza <a name = "varianza"></a>
 
 La varianza representa la variabilidad de una serie de datos respecto a su media. Calculamos la varianza utilizando la función `var()`
 
@@ -175,7 +166,7 @@ La varianza representa la variabilidad de una serie de datos respecto a su media
 var()
 ```
 
-# Desviación estándar <a name = "Desviacion_estandar"></a>
+## Desviación estándar <a name = "desviacion_estandar"></a>
 La desviación estándar es la raíz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza. Calculamos la desviación estándar usando la función `sd()`
 
 ```{r pressure, echo=FALSE}
@@ -188,7 +179,7 @@ sqrt_vec <- sqrt(var(x))
 sqrt_vec
 ```
 
-## Medidas de localización <a name = "Medidas_de_disperion"></a>
+## Medidas de localización <a name = "medidas_loc"></a>
 Otras medidas muy utilizadas para describir los datos, son las medidas de localización donde se destacan los quantiles (cuartiles, deciles, percentiles), quienes tienen como función informar qué posición ocupará el dato de interés respecto a todo el conjunto de datos. Los cuantiles son el resultado de dividir los datos en fracciones de igual tamaño, de esta forma, si hablamos de cuartiles, significa que dividimos la muestra en cuatro; si hablamos de quintiles, significa que dividimos la muestra en cinco; si hablamos de deciles, en diez, y si hablamos de percentiles, en 100. variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Para determinar cuantiles de la muestra utilizamos la función `quantile()`, por ejemplo:
 
 ```{r pressure, echo=FALSE}
@@ -198,11 +189,10 @@ p=0.10   #para deciles
 quantile(x, probs=c(seq(0,1,p)))
 ```
 
-### Ejercicios <a name = "Ejercicios"></a>
+**Ejercicios**
 Ahora hagamos el siguiente ejercicio:
 
-**Cargar los datos**
-
+- Cargar los datos:
 Primero cargamos el set de datos desde el directorio de trabajo. No olvides utilizar `header=TRUE` para indicar que la primera fila del archivo corresponde al nombre de las variables.
 
 ```{r pressure, echo=FALSE}
@@ -218,13 +208,13 @@ bill_length <- penguins$bill_length_mm
 ¿Cual es el dato que más se repite?
 ¿Cual es el promedio de la muestra?
 ¿Cual es el valor central?
-Calcular las medidas de dispersion
+Calcular las medidas de dispersión
 
-# Prueba de comparación de medias - Prueba t <a name = "Prueba_t"></a>
+# Prueba de comparación de medias - Prueba t <a name = "prueba_t"></a>
 ¿Que debemos hacer si queremos comparar la media de una muestra con un valor estandar? ¿Qué debemos hacer si queremos comparar las medias de dos muestras? Se utiliza la prueba t. Para realizar este tipo de prueba se puede usar la función `t.test`
 
 Los argumentos a definir dentro de `t.test` para hacer la prueba son:
-- x : vector numerico con los datos
+- x : vector numérico con los datos
 - Alternative : tipo de hipótesis alterna. Los valores disponibles son "two.sided" cuando la hipótesis alterna es "diferente a", "less" para el caso < y "greater" para el caso >.
 - mu : valor de referencia de la prueba
 - conf.level : nivel de confianza para reportar el intervalo de confianza asociado (opcional).
@@ -238,7 +228,7 @@ Extraigamos los datos correspondientes a la longitud de la aleta (flipper_length
 flipper_length <- penguins$flipper_length
 body_mass <- penguins$body_mass
 ```
-### Ejercicio - Comparación de la media de una muestra con un valor estandar <a name = "Ejercicio_t1"></a>
+**Ejercicio 1** - Comparación de la media de una muestra con un valor estandar <a name = "Ejercicio_t1"></a>
 Este ejercicio lo realizaremos con la variable "flipper_length" e indicando el valor estándar de la media, en este caso, mu=200:
 
 ```{r pressure, echo=FALSE}
@@ -248,7 +238,7 @@ Definición de la hipótesis alternativa:
 ```{r pressure, echo=FALSE}
 t.test(flipper_length, mu=200, alternative="greater")
 ```
-### Ejercicio - Comparación de las medias de dos muestras <a name = "Ejercicio_t2"></a>
+**Ejercicio 2** - Comparación de las medias de dos muestras <a name = "Ejercicio_t2"></a>
 Este ejercicio lo realizaremos con las variables, "flipper_length" y "body_mass"
 
 ```{r pressure, echo=FALSE}
@@ -256,7 +246,7 @@ alfa<-0.05
 t.test(flipper_length,body_mass, var.equal = F, mu=200, conf.level = 1-alfa, alternative="greater")
 ```
 
-# Regresión lineal <a name = "Regresion_lineal"></a>
+# Regresión lineal <a name = "regresion_lineal"></a>
 
 El análisis de regresión es una herramienta estadística muy utilizada para establecer un modelo lineal de relación entre variables: las variables independientes (x) y la variable dependiente (y) que debe ser una variable continua.
 
@@ -267,18 +257,18 @@ El modelo matemático general para una regresión lineal es: y = b + ax
 - y es la variable dependiente o variable respuesta.
 - a y b corresponden a la pendiente de la ecuación y al intercepto, respectivamente. Cuando se trabaja con varias variables independientes, aquellas constantes que acompañen a los x se llamarán coeficientes.
 
-### Pasos para establecer una regresión
+**Pasos para establecer una regresión**
 Un ejemplo sencillo de regresión es predecir el peso (variable dependiente - y) de una persona cuando se conoce su altura (variable independiente - x). Para ello necesitamos tener la relación entre la altura y el peso de una persona. Para hacer un modelo de regresión se utiliza la función `lm()` la cual crea el modelo de relación entre la variable independiente `x` y la variable de respuesta `y`, así:
 
-### Ejemplo:
+**Ejemplo:**
 ```{r pressure, echo=FALSE}
 altura <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)   # Ingreso de valores de altura
 peso <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)            # Ingreso de valores de peso
 fit <- lm(peso~altura)                                          # Generación del modelo
 summary(fit)                                                 # Impresión y resumen del modelo
 ```
-# Función predict() <a name = "Funcion_predict"></a>
 
+# Predicciones <a name = "funcion_predict"></a>
 La sintaxis básica de `predict()` en regresión lineal es: `predict(objeto, nuevos_datos)`
 A continuación se describen los parámetros utilizados:
 - objeto es la formula ya creada mediante la función `lm()`.
@@ -293,8 +283,7 @@ pred <- predict(fit,new, interval = "confidence", level=0.90)
 table <- cbind(data,pred)
 ```
 
-### Ejercicio <a name = "Ejercicio_predict"></a>
-
+**Ejercicio**
 1. Realiza un gráfico de dispersion con el fin de conocer las relaciones existentes entre las variables "flipper_length_mm" y "body_mass_g"
 2. Calcula el modelo lineal para las variables "flipper_length_mm" (variable dependiente) y "body_mass_g" (variable independiente).
 3. Haz una predicción de la longitud de las aletas: Crea un data frame con nuevos valores para "body_mass": `2665,2690,6325,6400,6339,2676`, así:
@@ -303,8 +292,7 @@ table <- cbind(data,pred)
 new <- data.frame("body_mass" = c(2665,2690,6325,6400,6339,2676))
 ```
 
-## Distribución normal <a name = "Distribucion_normal"></a>
-
+## Distribución normal <a name = "distribucion_normal"></a>
 La distribución normal, que recibe los nombres de distribución gaussiana o curva de Gauss, es una de las distribuciones de probabilidad más importantes y ampliamente utilizadas en estadísticas y probabilidad. Se caracteriza por tener una forma de campana simétrica y ser completamente definida por dos parámetros: la media (μ) y la desviación estándar (σ). Sus principales características son:
 - Forma de campana: La gráfica de una distribución normal tiene una forma de campana, siendo simétrica alrededor de su media. Esto significa que la mayoría de los datos se concentran cerca de la media, y a medida que nos alejamos de la media hacia los extremos, la frecuencia de observaciones disminuye gradualmente.
 - Media, mediana y Moda iguales.
@@ -326,7 +314,7 @@ x
 hist(x, freq = F)
 lines(density(x))
 ```
-# Prueba Chi Cuadrado <a name = "Chi_cuadrado"></a>
+# Prueba Chi-Cuadrado <a name = "chi_cuadrado"></a>
 La prueba χ² (se puede pronunciar como «ji al cuadrado» o «chi al cuadrado») se utiliza para analizar la relación entre dos variables categóricas en un conjunto de datos, como por ejemplo, en pruebas de independencia y bondad de ajuste al modelo.
 
 Para crear una prueba chi-cuadrado en R es: `chisq.test(datos)`, primero crearemos una tabla con las características que vamos a comparar, así:
@@ -339,19 +327,19 @@ setosa_sepal_data
 
 Ahora, procederemos a realizar la prueba χ²:
 
-# Realizar la prueba Chi-cuadrado
+**Realizar la prueba Chi-cuadrado**
 ```{r pressure, echo=FALSE}
 chisq.test(setosa_sepal_data)
 ```
 
-# Ejercicio <a name = "Ejercicio"></a>
-Calcular el chi cuadrado entre dos variables de set de datos penguins, retirando los datos N.A
+**Ejercicio**
+Calcular el chi-cuadrado entre dos variables de set de datos penguins, retirando los datos N.A
 
 ```{r pressure, echo=FALSE}
 chisq.test(na.omit(penguins$body_mass_g))
 ```
 
-# Coeficientes de correlación <a name = "Coeficientes_de_correlacion"></a>
+# Coeficientes de correlación <a name = "coeficientes_de_correlacion"></a>
 
 El coeficiente de correlación se utiliza para cuantificar la relación o asociación entre dos variables cuantitativas en un conjunto de datos. El coeficiente de correlación puede tomar un rango de valores de +1 a -1. Un valor de 0 indica que no hay asociación entre las dos variables. Un valor mayor que 0 indica una asociación positiva. Es decir, a medida que aumenta el valor de una variable, también lo hace el valor de la otra. Un valor menor que 0 indica una asociación negativa, es decir, a medida que aumenta el valor de una variable, el valor de la otra disminuye. Hay varios tipos de coeficientes de correlación, pero los dos más comunes son:
 - Coeficiente de correlación de Pearson (r) que se utiliza cuando la relación es lineal.
@@ -360,7 +348,7 @@ El coeficiente de correlación se utiliza para cuantificar la relación o asocia
 
 Para realizar la prueba de Coeficiente de Correlación de Pearson se usa la función `cor.test()`.
 
-# Ejemplo  <a name = "Ejemplo_cor"></a>
+**Ejemplo**
 A seguir algunos ejemplos
 ```{r pressure, echo=FALSE}
 cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "pearson", alternative = "greater")
@@ -379,18 +367,17 @@ cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "spearman", 
 cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "kendall", alternative = "greater")
 ```
 
-## Saber si existen valores NA   <a name = "valores_NA"></a>
-
+**Saber si existen valores NA**
 ```{r pressure, echo=FALSE}
 which(is.na(penguins$flipper_length_mm))
 ```
 
-# Ejercicio  <a name = "Ejercicio_cc"></a>
-
+**Ejercicio**
 Correlacionar dos variables "bill_length_mm" y "bill_depth_mm"
 ```{r pressure, echo=FALSE}
 
 ```
+
 # Escribiendo funciones propias <a name = "funciones_propias"></a>
 (Material utilizado de: https://es.r4ds.hadley.nz/19-functions.html)
 
