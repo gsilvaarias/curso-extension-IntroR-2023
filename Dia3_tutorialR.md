@@ -308,36 +308,24 @@ new <- data.frame("body_mass" = c(2665,2690,6325,6400,6339,2676))
 
 ## Distribución normal <a name = "Distribucion_normal"></a>
 
-En una colección aleatoria de datos procedentes de fuentes independientes, suele observarse que la distribución de los datos es normal. Es decir, al trazar un gráfico con el valor de la variable en el eje horizontal y el recuento de los valores en el eje vertical obtenemos una curva en forma de campana. El centro de la curva representa la media del conjunto de datos. En el gráfico, el cincuenta por ciento de los valores se situan a la izquierda de la media y el otro cincuenta por ciento a la derecha del gráfico.
+La distribución normal, que recibe los nombres de distribución gaussiana o curva de Gauss, es una de las distribuciones de probabilidad más importantes y ampliamente utilizadas en estadísticas y probabilidad. Se caracteriza por tener una forma de campana simétrica y ser completamente definida por dos parámetros: la media (μ) y la desviación estándar (σ). Sus principales características son:
+- Forma de campana: La gráfica de una distribución normal tiene una forma de campana, siendo simétrica alrededor de su media. Esto significa que la mayoría de los datos se concentran cerca de la media, y a medida que nos alejamos de la media hacia los extremos, la frecuencia de observaciones disminuye gradualmente.
+- Media, mediana y Moda iguales.
+- 68-95-99.7 Regla: En una distribución normal, aproximadamente el 68% de los datos se encuentra dentro de una desviación estándar de la media, el 95% se encuentra dentro de dos desviaciones estándar, y el 99.7% se encuentra dentro de tres desviaciones estándar.
+- Asíntota: 
 
-R tiene cuatro funciones incorporadas para generar la distribución normal:
+R tiene cuatro funciones relacionadas con la distribución normal:
 
-dnorm(x, media, sd) : guía de densidad
-pnorm(x, media, sd) : presenta la función de distribuición
-qnorm(p, media, sd) : presenta la función de quantil
-rnorm(n, media, sd) : presenta desviaciones aleatorias
+dnorm(x, media, sd) : presenta la función de densidad en el punto x en una distribución normal de parámetros x y sd.
+pnorm(x, media, sd) : indica el área bajo la curva en el punto x en una distribución normal de parámetros x y sd.
+qnorm(p, media, sd) : indica el quantil asociado a la probabilidad p en una distribución normal de parámetros x y sd.
+rnorm(n, media, sd) : genera una muestra aleatoria con distribución normal.
 
-A continuación se describen los parámetros utilizados en las funciones descritas:
-- x es un vector de números.
-- p es un vector de probabilidades.
-- n es el numero de observaciones (tamaño de la muestra).
-- media es el valor medio de los datos de la muestra. Su valor por defecto es cero.
-- sd es la desviación estandar. Su valor por defecto es 1.
+Solo nos enfocaremos en aprender a utilizar la función `rnorm` pues la explicación de las otras funciones esta fuera del alcance de este curso. En este ejemplo, crearemos 100 datos aleatorios con media como 2,5 y la desviación típica como 0,5, así:
 
-### dnorm()
-Esta función da la altura de la distribución de probabilidad en cada punto para una media y una desviación típica.
-
-Crear una secuencia de numeros entre -10 y 10 incrementando de 0 en 0.
 ```{r pressure, echo=FALSE}
-x <- seq(-10, 10, by = .1)
-x
+rnorm(100, 2.5, 0.5)
 ```
-
-Elige la media como 2,5 y la desviación típica como 0,5.
-```{r pressure, echo=FALSE}
-
-```
-
 # Prueba Chi Cuadrado <a name = "Chi_cuadrado"></a>
 La prueba χ² (se puede pronunciar como «ji al cuadrado» o «chi al cuadrado») se utiliza para analizar la relación entre dos variables categóricas en un conjunto de datos, como por ejemplo, en pruebas de independencia y bondad de ajuste al modelo.
 
