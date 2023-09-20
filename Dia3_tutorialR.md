@@ -83,10 +83,6 @@ Para conocer la suma total de la muestra, utilizamos la funcion sum()
 sum(x)
 ```
 Para conocer  tamaño de la muestra empleamos la funcion length()
-
-```{r presures, echo=FALSE}
-?length
-```
 ```{r presures, echo=FALSE}
 length(x)
 ```
@@ -153,10 +149,6 @@ print(result.mean)
 
 # Mediana <a name = "Mediana"></a>
 La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. La mediana podemos determinarla con la funcion median()
-
-```{r pressure, echo=FALSE}
-?median()
-```
 ```{r pressure, echo=FALSE}
 median(x)  
 ```
