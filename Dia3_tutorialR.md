@@ -339,21 +339,9 @@ Elige la media como 2,5 y la desviación típica como 0,5.
 ```
 
 # Prueba Chi Cuadrado <a name = "Chi_cuadrado"></a>
-En estadística y estadística aplicada se denomina prueba χ² (pronunciado como «ji al cuadrado»1​ y a veces como «chi al cuadrado») a cualquier prueba en la que el estadístico utilizado sigue una distribución χ² si la hipótesis nula es cierta.
+La prueba χ² (se puede pronunciar como «ji al cuadrado» o «chi al cuadrado») se utiliza para analizar la relación entre dos variables categóricas en un conjunto de datos, como por ejemplo, en pruebas de independencia y bondad de ajuste al modelo.
 
-Para crear una prueba chi-cuadrado en R es:
-`chisq.test(datos)`
-A continuación se describen los parámetros utilizados:
-- datos son los datos en forma de tabla que contienen el valor de recuento de las variables en la observación.
-
-### Ejemplo <a name = "Ejemplo_chi"></a>
-
-Tomaremos los valores del dataset "iris"
-```{r presures, echo=FALSE}
-
-```
-
-# Crear una base de datos a partir del conjunto de datos principales
+Para crear una prueba chi-cuadrado en R es: `chisq.test(datos)`, primero crearemos una tabla con las características que vamos a comparar, así:
 
 ```{r pressure, echo=FALSE}
 setosa <- iris %>% filter(Species == "setosa")
@@ -361,6 +349,7 @@ setosa_sepal_data <- data.frame("Sepal_length"=setosa$Sepal.Length, "Sepal_weidt
 setosa_sepal_data
 ```
 
+Ahora, procederemos a realizar la prueba χ²:
 
 # Realizar la prueba Chi-cuadrado
 ```{r pressure, echo=FALSE}
@@ -376,13 +365,12 @@ chisq.test(na.omit(penguins$body_mass_g))
 
 # Coeficientes de correlación <a name = "Coeficientes_de_correlacion"></a>
 
-El coeficiente de correlación de Pearson es una prueba que mide la relación estadística entre dos variables continuas. Si la asociación entre los elementos no es lineal, entonces el coeficiente no se encuentra representado adecuadamente.
-El coeficiente de correlación puede tomar un rango de valores de +1 a -1. Un valor de 0 indica que no hay asociación entre las dos variables. Un valor mayor que 0 indica una asociación positiva. Es decir, a medida que aumenta el valor de una variable, también lo hace el valor de la otra. Un valor menor que 0 indica una asociación negativa, es decir, a medida que aumenta el valor de una variable, el valor de la otra disminuye.
+El coeficiente de correlación se utiliza para cuantificar la relación o asociación entre dos variables cuantitativas en un conjunto de datos. El coeficiente de correlación puede tomar un rango de valores de +1 a -1. Un valor de 0 indica que no hay asociación entre las dos variables. Un valor mayor que 0 indica una asociación positiva. Es decir, a medida que aumenta el valor de una variable, también lo hace el valor de la otra. Un valor menor que 0 indica una asociación negativa, es decir, a medida que aumenta el valor de una variable, el valor de la otra disminuye. Hay varios tipos de coeficientes de correlación, pero los dos más comunes son: 
+- Coeficiente de correlación de Pearson (r) que se utiliza cuando la relación es lineal.
+- Coeficiente de correlación de Spearman (ρ) aplicado cuando la relación no es lineal o los datos no tienen una distribución normal.
+- Coeficiente de correlación de Kendal aplicado para evaluar la asociación entre dos variables ordenadas.
 
 Para realizar la prueba de Coeficiente de Correlación de Pearson se usa la función `cor.test()`.
-```{r pressure, echo=FALSE}
-
-```
 
 # Ejemplo  <a name = "Ejemplo_cor"></a>
 A seguir algunos ejemplos
@@ -396,7 +384,7 @@ cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "pearson", a
 ```
 
 ```{r pressure, echo=FALSE}
-cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "spearm", alternative = "greater")
+cor.test(penguins$flipper_length_mm, penguins$body_mass_g, method = "spearman", alternative = "greater")
 ```
 
 ```{r pressure, echo=FALSE}
