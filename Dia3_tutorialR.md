@@ -206,7 +206,7 @@ Ahora hagamos el siguiente ejercicio:
 
 **Cargar los datos**
 
-Primero cargamos el set de datos desde el directorio de trabajo. Utilizamos `header=TRUE` para indicar que la primera fila del archivo corresponde al nombre de las variables.
+Primero cargamos el set de datos desde el directorio de trabajo. No olvides utilizar `header=TRUE` para indicar que la primera fila del archivo corresponde al nombre de las variables.
 
 ```{r pressure, echo=FALSE}
 penguins<-read.table("./CursoR_2023/Datos/penguins_matrix.txt", header=T)
@@ -223,19 +223,8 @@ bill_length <- penguins$bill_length_mm
 ¿Cual es el valor central?
 Calcular las medidas de dispersion
 
-# Prueba t <a name = "Prueba_t"></a>
-
-¿Que debemos hacer si queremos comparar la media de dos muestras? Se utiliza la prueba t
-
-Extraigamos los datos correspondientes a la longitud de la aleta y la masa corporal
-
-```{r pressure, echo=FALSE}
-
-```
-
-## Continuamos con nuestra prueba t
-
-Para realizar este tipo de prueba se puede usar la función `t.test`
+# Prueba de comparación de medias - Prueba t <a name = "Prueba_t"></a>
+¿Que debemos hacer si queremos comparar la media de una muestra con un valor estandar? ¿Qué debemos hacer si queremos comparar las medias de dos muestras? Se utiliza la prueba t. Para realizar este tipo de prueba se puede usar la función `t.test`
 
 Los argumentos a definir dentro de `t.test` para hacer la prueba son:
 - x : vector numerico con los datos
@@ -246,14 +235,15 @@ Los argumentos a definir dentro de `t.test` para hacer la prueba son:
 ```{r pressure, echo=FALSE}
 ?t.test
 ```
+Extraigamos los datos correspondientes a la longitud de la aleta (flipper_length) y la masa corporal (body_mass), así:
 
-Para una variable, realizar con "flipper_length"
-
-```{r pressure, echo=FALSE}
-
+```{r presure, echo=FALSE}
+flipper_length <- penguins$flipper_length
+body_mass <- penguins$body_mass
 ```
 
-Indicando el valor de la media
+Ejercicio para comparar la media de una muestra con un valor estandar. Este ejercicio lo realizaremos con la variable "flipper_length" e indicando el valor estándar de la media, en este caso, mu=200:
+
 ```{r pressure, echo=FALSE}
 t.test(flipper_length, mu=200)
 ```
@@ -269,7 +259,9 @@ Calcula el t-test para la variable "body_mass_g"
 Entre dos variables, realizarlo para "flipper_length" y "body_mass"
 
 ```{r pressure, echo=FALSE}
-
+alfa<-0.05
+t.test(x,y,var.equal = F, conf.level = 1-alfa, alternative = "two.sided")
+t.test(flipper_length,body_mass, var.equal = F, mu=200, conf.level = 1-alfa, alternative="greater")
 ```
 
 # Regresión lineal <a name = "Regresion_lineal"></a>
