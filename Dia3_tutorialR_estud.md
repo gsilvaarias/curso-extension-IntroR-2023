@@ -138,6 +138,7 @@ print(result.mean)
 ## Mediana <a name = "mediana"></a>
 La mediana es el valor central si todos los datos se ordenan de menor a mayor. El valor mas medio de una serie de datos se denomina mediana. La mediana podemos determinarla con la funcion median()
 ```{r pressure, echo=FALSE}
+x<-x[-11]
 median(x)  
 ```
 # Medidas de dispersion <a name = "medidas_de_disperion"></a>
@@ -150,27 +151,27 @@ El rango, el valor máximo y mínimo, la variabilidad y la desviación estándar
 Podemos calcular el rango "manualmente", encontrando el dato máximo de los datos y restando el dato mínimo, así:
 
 ```{r pressure, echo=FALSE}
-max() - min()
+max(x) - min(x)
 ```
 
 Si utilizamos la función `range()` nos mostrará el dato máximo y dato minimo de los datos, sin embago, debes tener en cuenta que esta función no encuentra la diferencia:
 
 ```{r pressure, echo=FALSE}
-range()
+range(x)
 ```
 ## Varianza <a name = "varianza"></a>
 
 La varianza representa la variabilidad de una serie de datos respecto a su media. Calculamos la varianza utilizando la función `var()`
 
 ```{r pressure, echo=FALSE}
-var()
+var(x)
 ```
 
 ## Desviación estándar <a name = "desviacion_estandar"></a>
 La desviación estándar es la raíz cuadrada del promedio de las distancias al cuadrado que van desde las observaciones a la media, es decir, la raíz cuadrada de la varianza. Calculamos la desviación estándar usando la función `sd()`
 
 ```{r pressure, echo=FALSE}
-sd()
+sd(x)
 ```
 
 Otra forma de calcular la desviación estandar, seria la siguiente:
@@ -183,10 +184,9 @@ sqrt_vec
 Otras medidas muy utilizadas para describir los datos, son las medidas de localización donde se destacan los quantiles (cuartiles, deciles, percentiles), quienes tienen como función informar qué posición ocupará el dato de interés respecto a todo el conjunto de datos. Los cuantiles son el resultado de dividir los datos en fracciones de igual tamaño, de esta forma, si hablamos de cuartiles, significa que dividimos la muestra en cuatro; si hablamos de quintiles, significa que dividimos la muestra en cinco; si hablamos de deciles, en diez, y si hablamos de percentiles, en 100. variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Para determinar cuantiles de la muestra utilizamos la función `quantile()`, por ejemplo:
 
 ```{r pressure, echo=FALSE}
-p=0.25   #para cuartiles
-p=0.20   #para quintiles
-p=0.10   #para deciles
-quantile(x, probs=c(seq(0,1,p)))
+quantile(x, probs=c(seq(0,1,0.25)))   #para cuartiles
+quantile(x, probs=c(seq(0,1,0.20)))   #para quintiles
+quantile(x, probs=c(seq(0,1,0.10)))   #para deciles
 ```
 
 **Ejercicios**
