@@ -141,7 +141,7 @@ La mediana es el valor central si todos los datos se ordenan de menor a mayor. E
 x<-x[-11]
 median(x)  
 ```
-# Medidas de dispersion <a name = "medidas_de_disperion"></a>
+# Medidas de dispersion <a name = "medidas_de_dispersion"></a>
 Las medidas de dispersión tratan, a través del cálculo de diferentes fórmulas, de arrojar un valor numérico que ofrezca información sobre el grado de variabilidad de una variable.
 
 ## Rango <a name = "rango"></a>
@@ -159,7 +159,7 @@ Si utilizamos la función `range()` nos mostrará el dato máximo y dato minimo 
 ```{r pressure, echo=FALSE}
 range(x)
 ```
-## Varianza <a name = "varianza"></a>
+## Varianza <a name = "variancia"></a>
 
 La varianza representa la variabilidad de una serie de datos respecto a su media. Calculamos la varianza utilizando la función `var()`
 
@@ -292,7 +292,7 @@ table <- cbind(data,pred)
 new <- data.frame("body_mass" = c(2665,2690,6325,6400,6339,2676))
 ```
 
-## Distribución normal <a name = "distribucion_normal"></a>
+## Distribución normal <a name = "distribuicion_normal"></a>
 La distribución normal, que recibe los nombres de distribución gaussiana o curva de Gauss, es una de las distribuciones de probabilidad más importantes y ampliamente utilizadas en estadísticas y probabilidad. Se caracteriza por tener una forma de campana simétrica y ser completamente definida por dos parámetros: la media (μ) y la desviación estándar (σ). Sus principales características son:
 - Forma de campana: La gráfica de una distribución normal tiene una forma de campana, siendo simétrica alrededor de su media. Esto significa que la mayoría de los datos se concentran cerca de la media, y a medida que nos alejamos de la media hacia los extremos, la frecuencia de observaciones disminuye gradualmente.
 - Media, mediana y Moda iguales.
@@ -339,7 +339,7 @@ Calcular el chi-cuadrado entre dos variables de set de datos penguins, retirando
 chisq.test(na.omit(penguins$body_mass_g))
 ```
 
-# Coeficientes de correlación <a name = "coeficientes_de_correlacion"></a>
+# Coeficientes de correlación <a name = "coeficientes_correlacion"></a>
 
 El coeficiente de correlación se utiliza para cuantificar la relación o asociación entre dos variables cuantitativas en un conjunto de datos. El coeficiente de correlación puede tomar un rango de valores de +1 a -1. Un valor de 0 indica que no hay asociación entre las dos variables. Un valor mayor que 0 indica una asociación positiva. Es decir, a medida que aumenta el valor de una variable, también lo hace el valor de la otra. Un valor menor que 0 indica una asociación negativa, es decir, a medida que aumenta el valor de una variable, el valor de la otra disminuye. Hay varios tipos de coeficientes de correlación, pero los dos más comunes son:
 - Coeficiente de correlación de Pearson (r) que se utiliza cuando la relación es lineal.
