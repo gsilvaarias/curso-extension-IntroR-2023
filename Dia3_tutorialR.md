@@ -203,11 +203,14 @@ sqrt_vec
 Otras medidas muy utilizadas para describir los datos, son las medidas de localización donde se destacan los quantiles (cuartiles, deciles, percentiles), quienes tienen como función informar qué posición ocupará el dato de interés respecto a todo el conjunto de datos. Los cuantiles son el resultado de dividir los datos en fracciones de igual tamaño, de esta forma, si hablamos de cuartiles, significa que dividimos la muestra en cuatro; si hablamos de quintiles, significa que dividimos la muestra en cinco; si hablamos de deciles, en diez, y si hablamos de percentiles, en 100. variando el  valor de probabilidad podemos obtener cuartiles, deciles, percentiles. Para determinar cuantiles de la muestra utilizamos la función `quantile()`, por ejemplo:
 
 ```{r pressure, echo=FALSE}
-quantile(x, probs=c(0, 0.2, 0.4, 0.6, 0.8, 1))  
+p=0.25   #para cuartiles
+p=0.20   #para quintiles
+p=0.10   #para deciles
+quantile(x, probs=c(seq(0,1,p))) 
 ```
 
 ### Ejercicios <a name = "Ejercicios"></a>
-Ahora hagamos un ejercicio
+Ahora hagamos el siguiente ejercicio:
 
 **Cargar los datos**
 
@@ -230,9 +233,7 @@ Calcular las medidas de dispersion
 
 # Prueba t <a name = "Prueba_t"></a>
 
-¿Que debemos hacer si queremos comparar la media de dos muestras?
-
-Se utiliza la prueba t
+¿Que debemos hacer si queremos comparar la media de dos muestras? Se utiliza la prueba t
 
 Extraigamos los datos correspondientes a la longitud de la aleta y la masa corporal
 
@@ -246,7 +247,7 @@ Para realizar este tipo de prueba se puede usar la función `t.test`
 
 Los argumentos a definir dentro de `t.test` para hacer la prueba son:
 - x : vector numerico con los datos
-- Alternative : tipo de hipótesis alterna. Los valores disponibles son "two.sided" cuando la hipótesis alterna es, "less" para el caso < y "greater" para el caso >.
+- Alternative : tipo de hipótesis alterna. Los valores disponibles son "two.sided" cuando la hipótesis alterna es "diferente a", "less" para el caso < y "greater" para el caso >.
 - mu : valor de referencia de la prueba
 - conf.level : nivel de confianza para reportar el intervalo de confianza asociado (opcional).
 
