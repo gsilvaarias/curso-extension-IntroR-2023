@@ -200,7 +200,7 @@ Vamos a seleccionar la columna (bill_length_mm)
 ```{r presure, echo=FALSE}
 bill_length <- penguins$bill_length_mm
 ```
-
+Ejercicio:
 ¿Cual es el dato que más se repite?
 ¿Cual es el promedio de la muestra?
 ¿Cual es el valor central?
@@ -221,8 +221,8 @@ Los argumentos a definir dentro de `t.test` para hacer la prueba son:
 Extraigamos los datos correspondientes a la longitud de la aleta (flipper_length) y la masa corporal (body_mass), así:
 
 ```{r presure, echo=FALSE}
-flipper_length <- penguins$flipper_length
-body_mass <- penguins$body_mass
+flipper_length <- penguins$flipper_length_mm
+body_mass <- penguins$body_mass_g
 ```
 **Ejercicio 1** - Comparación de la media de una muestra con un valor estandar <a name = "Ejercicio_t1"></a>
 Este ejercicio lo realizaremos con la variable "flipper_length" e indicando el valor estándar de la media, en este caso, mu=200:
