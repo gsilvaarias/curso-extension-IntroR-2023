@@ -10,7 +10,6 @@ output: html_document
 
 - [Conceptos clave](#conceptos)
 - [Estadística Descriptiva](#estadistica_descriptiva)
-- [Medidas de tendencia centrar](#Medidas)
   - [Moda](#Moda)
   - [Media](#Media)
     - [Uso de Trim](#Aplicacion_de_la_opcion_Trim)
@@ -55,7 +54,7 @@ x <-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137,
 x
 ```
 
-# Medidas de tendencia central <a name = "Medidas"></a>
+**Medidas de tendencia central:**
 Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
             - la moda
             - la media
