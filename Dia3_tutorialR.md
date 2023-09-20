@@ -51,9 +51,10 @@ Es una disciplina que se encarga de recoger, almacenar, ordenar, realizar tablas
 Comencemos definiendo una variable que contiene una secuencia de 34 numeros ¡Esta sera nuestra muestra!. Recuerda que para ingresar la secuencia en R debemos crear un vector, así:
 
 ```{r pressure, echo=FALSE}
-x<-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137, 138, 139, 140, 114, 142, 149, 143, 144, 145, 146, 147, 148, 133, 133, 133, 149, 150, 139, 152)
+x <-c(125, 126, 127, 128, 128, 129, 130, 131, 149, 132, 133, 134, 135, 136, 137, 138, 139, 140, 114, 142, 149, 143, 144, 145, 146, 147, 148, 133, 133, 133, 149, 150, 139, 152)
 x
 ```
+
 # Medidas de tendencia central <a name = "Medidas de tendencia central"></a>
 Es un número ubicado hacia el centro de la distribución de los valores de una serie de observaciones. Las medidas de tendencia central mas utilizadas son:
             -la moda
@@ -316,10 +317,10 @@ La distribución normal, que recibe los nombres de distribución gaussiana o cur
 
 R tiene cuatro funciones relacionadas con la distribución normal:
 
-dnorm(x, media, sd) : presenta la función de densidad en el punto x en una distribución normal de parámetros x y sd.
-pnorm(x, media, sd) : indica el área bajo la curva en el punto x en una distribución normal de parámetros x y sd.
-qnorm(p, media, sd) : indica el quantil asociado a la probabilidad p en una distribución normal de parámetros x y sd.
-rnorm(n, media, sd) : genera una muestra aleatoria con distribución normal.
+- dnorm(x, media, sd) : presenta la función de densidad en el punto x en una distribución normal de parámetros x y sd.
+- pnorm(x, media, sd) : indica el área bajo la curva en el punto x en una distribución normal de parámetros x y sd.
+- qnorm(p, media, sd) : indica el quantil asociado a la probabilidad p en una distribución normal de parámetros x y sd.
+- rnorm(n, media, sd) : genera una muestra aleatoria con distribución normal.
 
 Solo nos enfocaremos en aprender a utilizar la función `rnorm` pues la explicación de las otras funciones esta fuera del alcance de este curso. En este ejemplo, crearemos 100 datos aleatorios con media como 2,5 y la desviación típica como 0,5, así:
 
