@@ -289,46 +289,21 @@ A continuación se describen los parámetros utilizados:
 - El vector predictor es altura
 - La variable de respuesta es peso
 
-Ejemplo: Hallar el peso de una persona de estatura 170cm:
+Ejemplo: Hallar el peso de una persona correspondiente a las estatura 190cm, 195cm, 200cm, 205cm y 210cm:
 ```{r pressure, echo=FALSE}
-a <- data.frame(alt = 170)
-result <-  predict(relation,a)
-result
+new <- data.frame(altura = seq(190, 210, 5))
+pred <- predict(fit,new, interval = "confidence", level=0.90)
+table <- cbind(data,pred)
 ```
 
 ### Ejercicio <a name = "Ejercicio_predict"></a>
 
-Calculo de modelo lineal
-
-Para este ejercicio vamos a crear un data frame combinando las variables "flipper_length_mm" y "body_mass_g"
-
+1. Realiza un gráfico de dispersion con el fin de conocer las relaciones existentes entre las variables "flipper_length_mm" y "body_mass_g"
+2. Calcula el modelo lineal para las variables "flipper_length_mm" (variable dependiente) y "body_mass_g" (variable independiente).
+3. Haz una predicción de la longitud de las aletas: Crea un data frame con nuevos valores para "body_mass": `2665,2690,6325,6400,6339,2676`, así:
+    
 ```{r pressure, echo=FALSE}
-
-```
-
-Con el fin de conocer las relaciones existentes entre las variables podemos representar una matriz de diagramas de dispersion.
-
-```{r pressure, echo=FALSE}
-
-```
-
-Ajuste del modelo lineal "flipper_length" "body_mass"
-
-```{r pressure, echo=FALSE}
-
-```
-
-## Hacer predicciones <a name = "Hacer_predicciones"></a>
-
-Crear un data frame con nuevos valores
-```{r pressure, echo=FALSE}
-nuevas_medidas <- data.frame("body_mass" = c(2665,2690,6325,6400,6339,2676))
-```
-
-Predicción de la longitud de las aletas
-
-```{r pressure, echo=FALSE}
-
+new <- data.frame("body_mass" = c(2665,2690,6325,6400,6339,2676))
 ```
 
 ## Distribución normal <a name = "Distribucion_normal"></a>
