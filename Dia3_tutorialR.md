@@ -261,62 +261,25 @@ t.test(flipper_length,body_mass, var.equal = F, mu=200, conf.level = 1-alfa, alt
 
 # Regresión lineal <a name = "Regresion_lineal"></a>
 
-El análisis de regresión es una herramienta estadística muy utilizada para establecer un modelo de relación entre dos variables. Una de estas variables se denomina variable predictora cuyo valor se obtiene mediante experimentos. La otra variable se denomina variable de respuesta cuyo valor se deriva de la variable predictora.
+El análisis de regresión es una herramienta estadística muy utilizada para establecer un modelo lineal de relación entre variables: las variables independientes (x) y la variable dependiente (y) que debe ser una variable continua. 
 
-En la regresión lineal, estas dos variables se relacionan mediante una ecuación, en la que el exponente (potencia) de ambas variables es 1. Matemáticamente, una relación lineal representa una linea recta cuando se representa graficamente. Una relación no lineal en la que el exponente de cualquier variable no es igual a 1 crea una curva.
+Nota aclaratoria: Hay dos tipos de variable: Continua y discreta. Una variable continua es aquella que admite decimales por naturaleza (Ejemplos: el pH, el peso, la masa). En cambio, una variable discreta es aquella que no tiene sentido escribirla con decimales, es decir, no podemos hablar de 2 personas y media.
 
-La ecuación matemática general para una regresión lineal es:
-
-y = ax + b
-
-y es la variable de respuesta.
-
-x es la variable predictiva.
-
-a y b son constantes denominadas coeficientes.
+El modelo matemático general para una regresión lineal es: y = b + ax
+- x es la variable independiente.
+- y es la variable dependiente o variable respuesta.
+- a y b corresponden a la pendiente de la ecuación y al intercepto, respectivamente. Cuando se trabaja con varias variables independientes, aquellas constantes que acompañen a los x se llamarán coeficientes.
 
 ### Pasos para establecer una regresión
-Un ejemplo sencillo de regresión es predecir el peso de una persona cuando se conoce su altura. Para ello necesitamos tener la relación entre la altura y el peso de una persona.
+Un ejemplo sencillo de regresión es predecir el peso (variable dependiente - y) de una persona cuando se conoce su altura (variable independiente - x). Para ello necesitamos tener la relación entre la altura y el peso de una persona. Para hacer un modelo de regresión se utiliza la función `lm()` la cual crea el modelo de relación entre la variable independiente `x` y la variable de respuesta `y`, así:
 
-Los pasos para crear la relación son:
-- Realizar el experimento de recoger una muestra de valores observados de altura y peso correspondiente.
-- Crear un modelo de relación utilizando la función `lm()` en R.
-- Hallar los coeficientes del modelo creado y crear la ecuación matemática con ellos.
-- Obtener un resumen del modelo de relación para conocer el error medio en la predicción. También se denominan residuos.
-
-Para predecir el peso de las nuevas personas, utilizar la función `predict()` en R.
-
-### Datos de entrada
-A continuación se presentan los datos de muestra que representan las observaciones
-
-Valores de altura:
-
+### Ejemplo: 
 ```{r pressure, echo=FALSE}
-alt <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)
+alt <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)   # Ingreso de valores de altura
+peso <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)            # Ingreso de valores de peso
+fit <- lm(peso~alt)                                          # Generación del modelo
+summary(fit)                                                 # Impresión y resumen del modelo
 ```
-
-Valores de peso:
-```{r pressure, echo=FALSE}
-peso <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
-```
-
-# Función `lm()` <a name = "Funcion_lm"></a>
-
-Esta función crea el modelo de relación entre el predictor y la variable de respuesta.
-
-La sintaxis básica de la función `lm()` en regresión lineal es
-`lm(fórmula,datos)`
-A continuación se describen los parámetros utilizados:
-- formula es un símbolo que presenta la relación entre x e y.
-- datos es el vector sobre el que se aplicara la formula.
-
-Crear el modelo de relación y obtener los coeficientes
-Aplicar la función `lm()` para peso~alt
-
-```{r pressure, echo=FALSE}
-
-```
-
 # Función predict() <a name = "Funcion_predict"></a>
 
 La sintaxis básica de `predict()` en regresión lineal es:
