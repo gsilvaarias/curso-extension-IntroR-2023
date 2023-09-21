@@ -61,10 +61,6 @@ A veces especificar los tipos de datos puede ser muy dispendioso. Si podemos cor
 ```{r}
 ```
 
-Ahora que nuestros datos ya están disponibles en nuestro ambiente de trabajo, podemos hacerle algunas mejoras de formato. Por ejemplo, podemos usar la función `rename` del paquete `dplyr` para cambiar los nombres de las columnas.
-
-```{r}
-```
 
 ---
 **Otros tipos de archivos**
@@ -97,7 +93,12 @@ También esta disponible el paquete **writexl**, que nos permite crear hojas de 
 ---
 
 
-## Agregar información nuevas columnas
+## Modificar información de la tabla de datos
+
+Ahora que nuestros datos ya están disponibles en nuestro ambiente de trabajo, podemos hacerle algunas mejoras de formato. Por ejemplo, podemos usar la función `rename` del paquete `dplyr` para cambiar los nombres de las columnas.
+
+```{r}
+```
 
 A menudo nos encontramos con la situación que nuetra tabla de datos necesita información asociada que se encuentra en una tabla anexa. Si en nuestro análisis de datos necesitamos esta información diponible en la misma tabla de datos. Entonces podemos crear una o mas columnas nuevas para incluir la información deseada. Para esto el paquete `dplyr` tiene la "familia" de funciones `join()` (`left_join()`, `inner_join()`, `right_join()`, `full_join()`, `semi_join()`, y `anti_join()`). Veamos un ejemplo sencillo quer busca agregar información cualitativa del tamaño de los pinguinos que está en una tabla diferente.
 
@@ -206,7 +207,7 @@ Casi siempre tenemos nuestros datos en este formato, pero no siempre es asi. Vam
 
 ```
 
-
+En este ejemplo simple, podemos ver que tenemos medidas de peso de 30 pingüinos de las tres especies diferentes tomados en dos periodos de tiempo (2007 y 2009). Sin embargo, aquí NO tenemos la variable tiempo en ninguna columna. Esto lo podemos arreglar con la función `pivot_longer()` del paquete tidyr.
 
 ```{r}
 datos_pinguinos_mini %>% 
@@ -215,11 +216,19 @@ datos_pinguinos_mini %>%
                values_to = "peso") %>% 
   mutate(year = str_replace(year, "peso_", "")) %>% 
   mutate(year = as.numeric(year))
-  
 ```
 
 
 
+Ahora con una nueva columna para incluir la información de la variable "año de muestreo"" en nuestros análisis".
+
+
+## Síntesis
+
+- El meta-paquete tidyverse incluye un "universo" de paquetes que permiten hacer la mayor parte de análisis de datos.
+- `readr` incluye las funciones para leer datos con diferentes formatos. Los nombres de las funciones son muy similares a las del paquete base de R.
+- `dplyr` nos permite manipular los datos incluyendo el nombre de las variables, crear nuevas variables a partir de las operaciones entre los datos existentes, agrupar, sintetizar y filtrar datos .
+- `tidyr` tiene dos funciones básicas para transformar el formato de los datos para hacerlos más eficientes o "tidy".
 
 
 
