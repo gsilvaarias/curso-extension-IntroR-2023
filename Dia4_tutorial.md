@@ -213,14 +213,17 @@ En este ejemplo simple, podemos ver que tenemos medidas de peso de 30 pingüinos
 
 ```
 
+Ahora con una nueva columna para incluir la información de la variable "año de muestreo"" en nuestros análisis".
+
+
+
+
 ¿Los datos de los pingüinos necesita algún ajuste de formato?
  
 ```{r}
 
-
 ```
 
-Ahora con una nueva columna para incluir la información de la variable "año de muestreo"" en nuestros análisis".
 
 
 ## Síntesis
