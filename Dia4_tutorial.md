@@ -27,7 +27,7 @@ dplyr::filter()
 library(dplyr)
 filter()
 
-## Es bloque de código llama la función filter() del paquete dplyr sin ningún argumento solo para propósito de ver la función. Si se ejecuta dará un error porque la función no puede ejecutarse sin los datos de entrada.
+## Atención!! Este bloque de código llama la función filter() del paquete dplyr sin ningún argumento solo para propósito de ver la función. Si se ejecuta como está dará un error porque la función necesita los datos de entrada.
 ```
 
 > Ahora vamas a iniciar nuestra práctica usado el juego de datos de los pingüinos.
@@ -210,15 +210,15 @@ Casi siempre tenemos nuestros datos en este formato, pero no siempre es asi. Vam
 En este ejemplo simple, podemos ver que tenemos medidas de peso de 30 pingüinos de las tres especies diferentes tomados en dos periodos de tiempo (2007 y 2009). Sin embargo, aquí NO tenemos la variable tiempo en ninguna columna. Esto lo podemos arreglar con la función `pivot_longer()` del paquete tidyr.
 
 ```{r}
-datos_pinguinos_mini %>% 
-  pivot_longer(c("peso_2007","peso_2009"),
-               names_to = "year",
-               values_to = "peso") %>% 
-  mutate(year = str_replace(year, "peso_", "")) %>% 
-  mutate(year = as.numeric(year))
+
 ```
 
+¿Los datos de los pingüinos necesita algún ajuste de formato?
+ 
+```{r}
 
+
+```
 
 Ahora con una nueva columna para incluir la información de la variable "año de muestreo"" en nuestros análisis".
 
