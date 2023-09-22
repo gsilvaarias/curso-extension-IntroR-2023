@@ -64,6 +64,7 @@ Además, hay mucho material disponible en la internet de forma gratis, como libr
 - [An R companion to Statistical Thinking for the 21st Century](https://statsthinking21.github.io/statsthinking21-R-site/)
 - [An Introduction to R and Python for Data Analysis](https://randpythonbook.netlify.app/)
 - [Data Visualization](https://socviz.co/)
+- [Interactive web-based data visualization with R, plotly, and shiny](https://buff.ly/2Vn4YYp)
 
 **Websites**
 - [R Tutorial](https://www.tutorialspoint.com/r/index.htm)
