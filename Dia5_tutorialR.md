@@ -4,6 +4,7 @@
 
 ## Índice
 - [Recursos extra para hacer plots](#recursos)
+- [Las tablas "tidy"](#tablas)
 - [Factores](#factores)
 - [Plot](#plot)
 - [ggplot](#ggplot)
@@ -13,6 +14,51 @@
   - [Libro de ggplot](https://ggplot2-book.org/)
   - [Plot de mapas con ggplotR](https://forms.gle/ETo6d2pJZZc9Ek6J7): "Visualización de datos" > ejemplo 22-26
   - [Tutorial chévere](https://r.qcbs.ca/workshop03/book-en/index.html)
+
+## Cambio de formato. Las tablas "tidy" <a name = "tablas"></a>
+
+  Es importante tener un forma coherente de organizar sus datos en R, una organización llamada datos "tidy". Poner tus datos en este formato requiere algo de trabajo inicial, pero ese trabajo merece la pena a largo plazo. Una vez que tenga los datos ordenados y las herramientas ordenadas proporcionadas por los paquetes del tidyverse, pasará mucho menos tiempo trasladando los datos de una representación a otra, lo que le permitirá dedicar más tiempo a las cuestiones analíticas que tenga entre manos.
+
+  Puede representar los mismos datos de múltiples maneras. Sin embargo en tidyverse, es importante que los datos presenten un formato organizado que permita que:
+
+  - Cada variable debe tener su propia columna.
+
+  - Cada observación debe tener su propia fila.
+
+  - Cada valor debe tener su propia celda.
+
+  ![tidy-tables](./Images_markdown/tidy-tables.png)
+
+  Casi siempre tenemos nuestros datos en este formato, pero no siempre es asi. Vamos un ejemplo donde tomamos varias medidas en el tiempo sobre los mismos sujetos de observación.
+  ```{r}
+
+  ```
+
+  En este ejemplo simple, podemos ver que tenemos medidas de peso de 30 pingüinos de las tres especies diferentes tomados en dos periodos de tiempo (2007 y 2009). Sin embargo, aquí NO tenemos la variable tiempo en ninguna columna. Esto lo podemos arreglar con la función `pivot_longer()` del paquete tidyr.
+
+  ```{r}
+
+  ```
+
+  Ahora con una nueva columna para incluir la información de la variable "año de muestreo"" en nuestros análisis".
+
+
+
+
+  ¿Los datos de los pingüinos necesita algún ajuste de formato?
+
+  ```{r}
+
+  ```
+
+
+
+  ## Síntesis
+
+  - El meta-paquete tidyverse incluye un "universo" de paquetes que permiten hacer la mayor parte de análisis de datos.
+  - `readr` incluye las funciones para leer datos con diferentes formatos. Los nombres de las funciones son muy similares a las del paquete base de R.
+  - `dplyr` nos permite manipular los datos incluyendo el nombre de las variables, crear nuevas variables a partir de las operaciones entre los datos existentes, agrupar, sintetizar y filtrar datos .
+  - `tidyr` tiene dos funciones básicas para transformar el formato de los datos para hacerlos más eficientes o "tidy".
 
 ## Factores: <a name = "factores"></a>
 **Factores** son estructures de datos **muy** importantes que estábamos ignorando hasta ahora :astonished:
@@ -24,18 +70,18 @@ Los factores se almacenan como números enteros y tienen etiquetas únicas asoci
 Una vez creados, los factores sólo pueden contener un conjunto predefinido de valores, conocidos como niveles (*levels*). Por defecto, R siempre ordena los niveles por orden alfabético.
 
 Por ejemplo, hagamos un vector con observaciones por concentración de alguna sustancia:
-```
+```{r}
 
 ```
 
 A veces, el orden de los factores no importa, otras veces puede querer especificar el orden porque es significativo (por ejemplo, "bajo", "medio", "alto") o porque lo requiere un tipo de análisis concreto. Además, especificar el orden de los niveles nos permite comparar niveles:
-```
+```{r}
 
 ```
 
 >> **Ejercicio:** defina el directorio de trabajo, cargue el paquete `tidyverse`, lea los datos de los penguinos desde la carpeta `datasets` y confirme que los datos están bien.
 
-```
+```{r}
 
 ```
 
@@ -45,17 +91,17 @@ A veces, el orden de los factores no importa, otras veces puede querer especific
 Para más detalles sobre los argumentos de los parámetros gráficos, por ejemplo, cambiar márgenes, mire la función `par`.
 
 1. Gráfico general de comparaciones entre muestras:
-```
+```{r}
 
 ```
 
 2. Algo pareció interesante arriba? Podemos hacer la gráfica más específica para esta comparación:
-```
+```{r}
 
 ```
 
 Para comprender mejor, quizás es importante poner por color y algunas otras cositas
-```
+```{r}
 
 ```
 Tenga en cuenta que internamente la función almacenará los factores como números enteros (1 = "negro", 2 = "rojo", 3 = "verde", ...).
@@ -64,7 +110,7 @@ Tenga en cuenta que internamente la función almacenará los factores como núme
 
 3. Para salvar el imagen:
 Se puede salvar en diferentes tipos de datos, como: `jpeg`, `pdf`, `png`...,
-```
+```{r}
 
 ```
 >> Además se puede especificar el tamaño. Como podemos descubrir cómo especificar el tamaño?
@@ -138,45 +184,45 @@ Los pasos básicos para crear un gráfico simple son:
 Vamos poner las manos a trabajar! Pero antes no olvide de cargar el paquete `ggplot2`
 
 1. **Histogram:**
-```
+```{r}
 
 ```
 
 2. **Boxplot:**
-```
+```{r}
 
 ```
 Reordenar las variables:
-```
+```{r}
 
 ```
 
 >> Ejercicio: haga un gráfico del tamaño del pico por año.
 
 3. **Vamos hacer un gráfico similar que hicimos en el ejemplo de `base::plot`**
-```
+```{r}
 
 ```
 
 4. **Plots múltiples (facet):**
-```
+```{r}
 
 ```
 >> Ejercicio: cambie el facet para `facet_wrap` y mire lo que pasa.
 
 5. **Escoger cor manual:**
-```
+```{r}
 
 ```
 Tenga en cuenta que el orden de los colores sigue los factores `levels(factor(penguins$species))`
 
 6. **Color gradiente:**
-```
+```{r}
 
 ```
 
 7. **Utilizar paletas de color:**
-```
+```{r}
 
 ```
 
