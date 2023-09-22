@@ -37,7 +37,7 @@ x = c(1,2,3,4,5,6,7,8)
 ```
 - Corchete abierto pero sin cerrar
 
-**+**
+Símbolo **+** en la consola (en vez de **>**)
 
 ```{r}
 x = c(1,2,3,4,5,6,7,8
