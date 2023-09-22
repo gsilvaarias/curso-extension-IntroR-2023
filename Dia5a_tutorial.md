@@ -28,23 +28,52 @@ Si obtiene un error de sintaxis, entonces ha introducido un comando que R no pue
 
 Los errores más comunes son errores de sintaxis:
 
-- Olvidar una coma
+- Olvidar un símbolo
 
-*Error: unexpected symbol in…*
-
+*Error: unexpected symbol in ...*
+```{r}
+x = c(1,2,3,4,5,6,7,8)
+2 x
+```
 - Corchete abierto pero sin cerrar
+**+**
+```{r}
+x = c(1,2,3,4,5,6,7,8
+x[
+```
 
-- Nombre de un objeto, función o ruta de archivo mal escrito
+- Nombre de un objeto o ruta de archivo mal escrito
 
-*Error: object not found*
+
+*Error: object 'X' not found*
 <br>
 Por lo general, podrá darse cuenta fácilmente de que cometió un error tipográfico porque recibirá un error de *objeto no encontrado*. Recuerde que R también **distingue entre mayúsculas y minúsculas**.
+<br>
+También puede estar faltando comillas.
+```{r}
+Datos_pinguinos
+```
+
+```{r}
+rep(y, 5)
+```
+
 
 *Error : cannot open the connection*
 <br>
 Un archivo/conexión no puede abrirse porque R no puede encontrarlo (principalmente debido a un error en la ruta).
+```{r}
+datos_pinguinos <- read_csv("datasets/penguins_matrix2.txt")
+```
+
 
 - Tipo incorrecto de corchete de cierre (por ejemplo, un corchete cuadrado de apertura pero un paréntesis de cierre).
+
+*Error: unexpected ']' in "x(3]"*
+```{r}
+x(3]
+```
+
 
 - Un paquete no se ha cargado en R, por lo que R no sabe dónde encontrar la función especificada
 
@@ -52,23 +81,49 @@ Un archivo/conexión no puede abrirse porque R no puede encontrarlo (principalme
 <br>
 Es un buen hábito utilizar las funciones *library()* para todos los paquetes que va a utilizar en la parte superior R chunk en su archivo R Markdown. A este *chunk* normalmente se le da el nombre *setup*.
 
+*could not find function "read_csv"*
+<br>
+No se ha cargado el paquete
+```{r}
+datos_pinguinos <- read_csv("../datasets/penguins_matrix2.txt")
+```
+
+
 - Problemas con las dimensiones del objeto
 
-*Error : subscript out of bounds*
+*Error in ... : subscript out of bounds*
 <br>
 Errores causados por intentar acceder a un elemento o dimensión que no existe.
+
+```{r}
+x = matrix(0,5,7)
+x[6,1]
+```
 
 *Error : replacement has X rows, data has Y*
 <br>
 Este error se produce cuando se intenta asignar un vector de valores a un subconjunto de un objeto existente y las longitudes no coinciden.
+```{r}
+data <- data.frame(x1 = c(1, 1, 2, 3, 4),
+                   x2 = "x")
+
+data$x3 <- rep("y", 5)
+```
+
+
+
 
 - Mezclar datos en formato numérico con datos en formato carácter
 
-*Error : non-numeric argument to a binary operator*
+*Error in ... : non-numeric argument to a binary operator*
 <br>
 Este es un error sencillo de descifrar. Esto ocurre cuando mezclamos diferentes valores vectoriales en el cálculo.
 
-
+```{r}
+vec1 <- 1:3
+vec2 <- c("esto", "es", "vector")
+vec1 + vec2
+```
 
 ## Errores semánticos <a name = "semantica"></a>
 
