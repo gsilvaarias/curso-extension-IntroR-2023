@@ -44,21 +44,37 @@ opts_knit$set(root.dir = "~/Documents/GitHub/curso-extension-IntroR/")
 Tidyverse tiene muchas de funciones útiles para leer datos desde el disco, una de estas es `read_csv()`.
 
 ```{r}
+datos_pinguinos <- read_csv("datasets/penguins_matrix2.txt")
+datos_pinguinos
 ```
 
 Cuando ejecuta `read_csv()`, imprime un mensaje que le indica el número de filas y columnas de datos, el delimitador utilizado y las especificaciones de las columnas (nombres de las columnas organizados por el tipo de datos que contiene la columna). También muestra información sobre cómo recuperar la especificación completa de la columna y cómo silenciar este mensaje. Este mensaje es una parte integral de `readr`.
 
 Para silenciar el mensaje de la especificación de las columnas podemos incluir el argumento `col_types`. Con el cual explícitamente especificamos el tipo de datos que tiene cada columna. A este argumento hay que proveerle una lista de los tipos de elementos donde los nombres de cada elemento debe corresponder a los nombres de las columnas.
 
-Adicionalmente podemos aprovechar para especificar el (los) caracteres usados para representar datos faltantes.
+Adicionalmente podemos aprovechar para especificar el (los) caracteres usados para representar datos faltantes. Por ejemplo, "NA", "na", "" (campo vacío) y "N/A".
 
 
 ```{r}
+datos_pinguinos <- read_csv("datasets/penguins_matrix2.txt",
+                            col_types = list(species = col_character(),
+                                             island = col_character(),
+                                             bill_length_mm = col_double(),
+                                             bill_depth_mm = col_double(),
+                                             flipper_length_mm = col_integer(),
+                                             body_mass_g = col_integer(),
+                                             sex = col_character(),
+                                             year = col_integer()),
+                            na = c("NA", "na", "", "N/A"))
+datos_pinguinos
 ```
 
 A veces especificar los tipos de datos puede ser muy dispendioso. Si podemos corroborar que la función `read_csv()` hizo bien la inferencia del tipo de datos de cada columna, podemos usar la opción `show_col_types = FALSE` para silenciar el mensaje.
 
 ```{r}
+datos_pinguinos <- read_csv("datasets/penguins_matrix2.txt",
+                            show_col_types = FALSE)
+datos_pinguinos
 ```
 
 
@@ -98,30 +114,86 @@ También esta disponible el paquete **writexl**, que nos permite crear hojas de 
 Ahora que nuestros datos ya están disponibles en nuestro ambiente de trabajo, podemos hacerle algunas mejoras de formato. Por ejemplo, podemos usar la función `rename` del paquete `dplyr` para cambiar los nombres de las columnas.
 
 ```{r}
+# renombrar columnas y asignar la tabla modificada al mismo objeto "datos_pinguinos"
+datos_pinguinos <- datos_pinguinos %>% 
+  rename(especie = species,
+         isla = island,
+         pico_long = bill_length_mm,
+         pico_alt = bill_depth_mm,
+         aleta_long = flipper_length_mm,
+         peso = body_mass_g,
+         sexo = sex,
+         fecha = year)
+         
+# visualizar la tabla
+datos_pinguinos
 ```
 
 A menudo nos encontramos con la situación que nuetra tabla de datos necesita información asociada que se encuentra en una tabla anexa. Si en nuestro análisis de datos necesitamos esta información diponible en la misma tabla de datos. Entonces podemos crear una o mas columnas nuevas para incluir la información deseada. Para esto el paquete `dplyr` tiene la "familia" de funciones `join()` (`left_join()`, `inner_join()`, `right_join()`, `full_join()`, `semi_join()`, y `anti_join()`). Veamos un ejemplo sencillo quer busca agregar información cualitativa del tamaño de los pinguinos que está en una tabla diferente.
 
 ```{r}
+### Agregar información cualitativa del tamaño de los pinguinos ###
+
+## hacer nueva tabla con info cualitativa de tamaños
+tamano_pinguinos <- tibble(especie = c("Adelie", "Chinstrap", "Gentoo"),
+                           tamano = c("pequeno", "mediano", "grande"))
+
+## adjuntar la información a la tabla de los pinguinos
+datos_pinguinos %>% 
+  inner_join(tamano_pinguinos, join_by(especie))
 ```
 
 Si observamos con cuidado, podemos notar que la variable tamaño es de tipo *caracter*. Esto es de esperar porque los datos que tiene son palabras (o cadenas de caracteres). Sin embargo sabemos que los valores "pequeño", "mediano" y "grande" tienen un significado que implica un orden. Para datos asi, existe un tipo de da to en R llamado **factores**. Para convertir el tipo de datos podemos usar la función `mutate()` del paquete `dplyr`.
 
 ```{r}
+## adjuntar la información a la tabla de los pinguinos y convertir el tipo de variable "tamano" de caracter a factor
+datos_pinguinos %>% 
+  ## adjuntar la información de tamaño a la tabla de los pinguinos
+  inner_join(tamano_pinguinos, join_by(especie)) %>% 
+  ## convertir la variable tamaño de caracter a factor
+  mutate(tamano = factor(tamano))
 ```
 
 La función `mutate()` también nos permite agregar nuevas columnas usando los datos de la misma tabla. Veamos los ejemplos que ya trabajamos en el día 2.
 
 
 ```{r}
+datos_pinguinos %>% 
+  ## adjuntar la información de tamaño a la tabla de los pinguinos
+  inner_join(tamano_pinguinos, join_by(especie)) %>% 
+  ## convertir la variable tamaño de caracter a factor
+  mutate(tamano = factor(tamano)) %>% 
+  ## crear una nueva variable (columna) pico_rel_long_alt
+  mutate(pico_rel_long_alt = pico_long/pico_alt)
 ```
 
 ```{r}
+datos_pinguinos %>% 
+  ## adjuntar la información de tamaño a la tabla de los pinguinos
+  inner_join(tamano_pinguinos, join_by(especie)) %>% 
+  ## convertir la variable tamaño de caracter a factor
+  mutate(tamano = factor(tamano)) %>% 
+  ## crear una nueva variable (columna) pico_rel_long_alt
+  mutate(pico_rel_long_alt = pico_long/pico_alt) %>% 
+  ## cambiar las unidades de peso
+  mutate(peso = peso/1000)
 ```
 
 Ahora que hemos terminado de completar nuestros datos, podemos asignar la tabla terminada a un nuevo elemento
 
 ```{r}
+datos_pinguinos_completa <- datos_pinguinos %>% 
+  ## adjuntar la información de tamaño a la tabla de los pinguinos
+  inner_join(tamano_pinguinos, join_by(especie)) %>% 
+  ## convertir la variable tamaño de caracter a factor
+  mutate(tamano = factor(tamano)) %>% 
+  ## crear una nueva variable (columna) pico_rel_long_alt
+  mutate(pico_rel_long_alt = pico_long/pico_alt) %>% 
+  ## cambiar las unidades de peso
+  mutate(peso = peso/1000)
+  
+## visualizar la nueva tabla
+datos_pinguinos_completa
 ```
 
 
@@ -131,7 +203,7 @@ Explorar los datos es una parte fundamental del análisis. Vamos a ver una funci
 
 Esta sección le mostrará cómo utilizar algunas transformaciones para explorar los datos de forma sistemática, esto es un ciclo iterativo. Usted:
 
--Genera preguntas sobre sus datos.
+- Genera preguntas sobre sus datos.
 
 - Busca respuestas sintetizando los datos.
 
@@ -147,44 +219,63 @@ La exploración de los datos es una parte importante de cualquier análisis de d
 1. ¿Cuántas observaciones tenemos de cada especie?
 
 ```{r}
-
+datos_pinguinos_completa %>% 
+  count(especie)
 ```
 
 2. ¿Cuántas observaciones tenemos de cada especie dentro de las diferentes islas que visitamos?
 ```{r}
-
+datos_pinguinos_completa %>% 
+  count(especie, isla)
 ```
 
-3. Ahora discriminado por sexo
+3. ... ahora discriminado por sexo
 ```{r}
-
+datos_pinguinos_completa %>% 
+  count(especie, isla, sexo)
 ```
 
-3. Ahora discriminado por sexo ignorando los datos faltantes en la variable sexo
+4. ... ahora discriminado por sexo ignorando los datos faltantes en la variable sexo
 ```{r}
-
+datos_pinguinos_completa %>%
+  drop_na(sexo) %>% 
+    count(especie, isla, sexo)
 ```
 
-- Ahora podemos explorar las variables cuantitativas
+
+- Vamos podemos explorar las variables cuantitativas
 
 1. Media y variación de la longitud del pico en las diferentes especies
 ```{r}
-
+datos_pinguinos_completa %>% 
+  group_by(especie) %>% 
+  summarise(pico_long_prom = mean(pico_long, na.rm = T),
+            pico_long_ds = sd(pico_long, na.rm = T))
 ```
 
 2. Media y variación de la longitud del pico entre sexos
 ```{r}
-
+datos_pinguinos_completa %>% 
+  drop_na(sexo) %>% 
+  group_by(sexo) %>% 
+  summarise(pico_long_prom = mean(pico_long, na.rm = T),
+            pico_long_ds = sd(pico_long, na.rm = T))
 ```
 
 2. Media y variación del peso entre sexos
 ```{r}
-
+datos_pinguinos_completa %>% 
+  drop_na(sexo) %>% 
+  group_by(sexo, isla) %>% 
+  summarise(pico_long_prom = mean(peso, na.rm = T),
+            pico_long_ds = sd(peso, na.rm = T))
 ```
 
-
+3. Correlación entre variables
 ```{r}
-
+datos_pinguinos_completa %>% 
+  select(-fecha) %>% 
+  corrr::correlate()
 ```
 
 
@@ -204,12 +295,27 @@ Puede representar los mismos datos de múltiples maneras. Sin embargo en tidyver
 
 Casi siempre tenemos nuestros datos en este formato, pero no siempre es asi. Vamos un ejemplo donde tomamos varias medidas en el tiempo sobre los mismos sujetos de observación.
 ```{r}
+## Crear nueva tabla con datos de re-muestreo de peso en dos visitas
+datos_pinguinos_mini <- tibble(especie = c(rep("Adelie", 10),
+                                           rep("Gentoo", 12),
+                                           rep("Chinstrap", 8)),
+                               ID = paste0("Indv", 1:30),
+                               peso_2007 = rnorm(30, 3.5),
+                               peso_2009 = rnorm(30, 3.7))
 
+## visualizar la tabla creada
+datos_pinguinos_mini
 ```
 
 En este ejemplo simple, podemos ver que tenemos medidas de peso de 30 pingüinos de las tres especies diferentes tomados en dos periodos de tiempo (2007 y 2009). Sin embargo, aquí NO tenemos la variable tiempo en ninguna columna. Esto lo podemos arreglar con la función `pivot_longer()` del paquete tidyr.
 
 ```{r}
+datos_pinguinos_mini %>% 
+  pivot_longer(c("peso_2007","peso_2009"),
+               names_to = "year",
+               values_to = "peso") %>% 
+  mutate(year = str_replace(year, "peso_", "")) %>% 
+  mutate(year = as.integer(year))
 
 ```
 
@@ -221,7 +327,14 @@ Ahora con una nueva columna para incluir la información de la variable "año de
 ¿Los datos de los pingüinos necesita algún ajuste de formato?
  
 ```{r}
-
+datos_pinguinos_completa %>% 
+  select(especie, pico_long, pico_alt, pico_rel_long_alt) %>% 
+  pivot_longer(c("pico_long", "pico_alt", "pico_rel_long_alt"),
+               names_to = "medida_pico",
+               values_to = "valores") %>% 
+  mutate(medida_pico = str_replace(medida_pico, "pico_", "")) %>% 
+  mutate(medida_pico = str_replace(medida_pico, "long", "longitud")) %>% 
+  mutate(medida_pico = str_replace(medida_pico, "alt", "altura"))
 ```
 
 
