@@ -1,4 +1,4 @@
-### Lunes, 18 de septiembre, 2023
+### Lunes, 22 de septiembre, 2023
 # Introducción a Análisis en R para Datos Biológicos
 # Día 5 - Errores comunes
 
@@ -151,14 +151,8 @@ No ignore los *Warnings*.
 
 - [Impatient R](https://www.burns-stat.com/documents/tutorials/impatient-r/), P. Burns.
 
-- [R Error Message Cheat Sheet](http://varianceexplained.org/courses/errors/), D. Robinson 
+- [R Error Message Cheat Sheet](http://varianceexplained.org/courses/errors/), D. Robinson
 
 - [I’ve got 99 problems, but dependencies ain’t one by Noam Ross](https://github.com/noamross/zero-dependency-problems)
 
 - [Stackoverflow](https://stackoverflow.com/)
-
-
-
-
-
-
