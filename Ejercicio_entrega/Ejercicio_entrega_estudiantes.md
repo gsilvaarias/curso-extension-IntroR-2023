@@ -11,7 +11,11 @@ Las variables que se miden de cada flor son:
   - El ancho del sépalo en cm
 
 **Ejercicio para entrega:**  
+<<<<<<< HEAD
 Hacer un documento *Rmarkdown* con observaciones que ustedes hagan de los datos, estás observaciones deben incluir:
+=======
+Hacer un documento *Rmarkdown* con algunas observaciones que ustedes hagan de los datos, estás observaciones deben incluir:
+>>>>>>> refs/remotes/origin/main
 1. Una descripción general de los datos: utilice funciones que hablamos durante el curso para hacer una caracterización general de los datos.
 2. Genere una pregunta para realizar con los datos.
 3. Manipule los datos y haga alguna prueba estadística para responder las pregunta generada.
@@ -21,7 +25,15 @@ Importante tener en cuenta:
 - Ponga su nombre en el documento
 - Recuerde de aplicar las buenas prácticas de hacer códigos que fueron discutidas en el curso.
 
+<<<<<<< HEAD
 **Fecha de entrega:** 1 de octubre a las 11:59pm
 **Enviar por correo para:** ncortesd@unal.edu.co
+=======
+**Fecha de entrega:**  
+01 de octubre de 2023
+
+**Enviar por correo para:** 
+
+>>>>>>> refs/remotes/origin/main
 
 FIN :smile:
